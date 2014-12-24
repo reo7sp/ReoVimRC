@@ -80,7 +80,7 @@
 - **,** is a **&lt;leader&gt;** key
 - **0** is **^**
 - **j** is **gj**
-- **j** is **gk**
+- **k** is **gk**
 - **&lt;f2&gt;** toggles paste mode
 - **gV** selects text added in last insert mode
 - **&lt;space&gt;** toggles fold
