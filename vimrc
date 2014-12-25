@@ -2,7 +2,7 @@
 """""""""""""""""""""""""""""""""""""""
 "                                     "
 " Author: Reo_SP (http://reo7sp.ru)   "
-" Last update: Wed, 24 December 2014  "
+" Last update: Wed, 25 December 2014  "
 "                                     "
 """""""""""""""""""""""""""""""""""""""
 
@@ -221,6 +221,9 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 3)<CR>
 " delimitmate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+
+" syntastic
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " license
 let g:licenses_authors_name = 'Reo_SP' " change this value to your name
