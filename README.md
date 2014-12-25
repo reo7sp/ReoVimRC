@@ -1,5 +1,6 @@
 # **Reo VimRC**
 
+![Screenshot](http://i.imgur.com/XLWNhs9.png)
 
 ## How to install
 
