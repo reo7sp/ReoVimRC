@@ -61,7 +61,6 @@ NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'chrisbra/SudoEdit.vim'
-NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'vim-scripts/YankRing.vim'
 
@@ -217,10 +216,6 @@ endfunction
 " smooth scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 3)<CR>
-
-" delimitmate
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
 
 " syntastic
 let g:syntastic_cpp_compiler_options = ' -std=c++11'

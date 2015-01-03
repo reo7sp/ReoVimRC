@@ -40,7 +40,6 @@
 - [vim-expand-region](https://github.com/terryma/vim-expand-region) Allows to expand selection in visual mode
 - [nerdcommenter](https://github.com/scrooloose/nerdcommenter) Fast commenting
 - [SudoEdit.vim](https://github.com/chrisbra/SudoEdit.vim) Saves or loads files under sudo
-- [delimitMate](https://github.com/Raimondi/delimitMate) Auto closes brackets and parentheses
 - [vim-trailing-whitespace](https://github.com/bronson/vim-trailing-whitespace) Shows and fixes trailing whitespace
 - [YankRing.vim](https://github.com/vim-scripts/YankRing.vim) Yank command manager
 
