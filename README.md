@@ -92,11 +92,11 @@ For this purpose there is **~/.vimrc.user** file which you can edit as you want 
 - **0** is **^**
 - **j** is **gj**
 - **k** is **gk**
-- **&lt;f2&gt;** toggles paste mode
+- **&lt;f4&gt;** toggles paste mode
 - **gV** selects text added in last insert mode
 - **&lt;space&gt;** toggles fold
-- **&lt;f3&gt;** saves buffer
-- **&lt;f4&gt;** saves and closes buffer
+- **&lt;f2&gt;** saves buffer
+- **&lt;f3&gt;** saves and closes buffer
 - **&lt;f7&gt;** creates new buffer
 - **&lt;f9&gt;** switches to previous buffer
 - **&lt;f10&gt;** switches to next buffer

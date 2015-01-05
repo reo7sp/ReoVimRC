@@ -309,15 +309,15 @@ nnoremap j gj
 nnoremap k gk
 
 " Editing
-set pastetoggle=<F2>
+set pastetoggle=<f4>
 nnoremap gV `[v`]
 nnoremap <space> za
 map <S-Insert> <C-r>+
 map! <S-Insert> <C-r>+
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-nmap <f3> :w!<cr>
-nmap <f4> :w!<cr>:bp<cr>:bd #<cr>
+nmap <f2> :w!<cr>
+nmap <f3> :w!<cr>:bp<cr>:bd #<cr>
 
 " Buffers
 nmap <f7> :enew<cr>
