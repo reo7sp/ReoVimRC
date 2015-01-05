@@ -2,15 +2,15 @@
 
 INSTALL_DIR=~
 
-echo "Creating folders"
+echo "> Creating folders..."
 mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,sessions,spell} -p
 
 echo
-echo "Downloading neobundle"
+echo "> Downloading neobundle..."
 git clone https://github.com/Shougo/neobundle.vim $INSTALL_DIR/.vim/bundle/neobundle.vim
 
 echo
-echo "Copying configs"
+echo "> Copying configs..."
 cp vimrc $INSTALL_DIR/.vimrc
 if [ ! -f $INSTALL_DIR/.vimrc.user ]; then
 	cp vimrc.user $INSTALL_DIR/.vimrc.user
@@ -27,4 +27,4 @@ echo
 echo "Don't forget to change name for vim-licenses plugin in ~/.vimrc.user, if you want to use this plugin"
 
 echo
-echo "Happy coding with vim!"
+echo "~~~ Happy coding with vim! ~~~"
