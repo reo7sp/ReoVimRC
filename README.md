@@ -9,6 +9,17 @@
     ./install.sh
 
 
+## How to update
+
+    cd ReoVimRC
+    git pull origin master
+    ./install.sh
+
+
+## How to add custom settings
+For this purpose there is **~/.vimrc.user** file which you can edit as you want and changes won't be lost after this vimrc's update
+
+
 ## Plugins
 
 ### General
@@ -69,9 +80,9 @@
 
 ### Plugins
 - Neocomplcache: **&lt;tab&gt;** selects next completion
-- Neosnippets: **&lt;c-k&gt;** and **&lt;cr&gt;** expands snippet
-- Nerdtree: **&lt;c-t&gt;** toggles tree
-- Tagbar: **&lt;c-g&gt;** toggles tree
+- Neosnippets: **&lt;c-k&gt;** expands snippet
+- Nerdtree: **&lt;leader&gt;t** toggles tree
+- Tagbar: **&lt;leader&gt;g** toggles tree
 - ctrlp: **&lt;c-f&gt;** opens file search, **&lt;c-b&gt;** opens buffer, **&lt;c-m&gt;** opens mru
 - easymotion: **s** starts single character search in whole file, **&lt;leader-{l,j,k,h}&gt;** open single character search in specified direction
 - multiple-cursors: **&lt;c-l&gt;** selects next occurence, **&lt;c-h&gt;** selects previous occurence, **&lt;c-j&gt;** skips occurence
@@ -84,12 +95,12 @@
 - **&lt;f2&gt;** toggles paste mode
 - **gV** selects text added in last insert mode
 - **&lt;space&gt;** toggles fold
-- **&lt;leader&gt;w** saves buffer
-- **&lt;leader&gt;s** saves and closes buffer
-- **&lt;leader&gt;n** creates new buffer
-- **&lt;leader&gt;o** switches to previous buffer
-- **&lt;leader&gt;p** switches to next buffer
-- **&lt;leader&gt;q** closes buffer
+- **&lt;f3&gt;** saves buffer
+- **&lt;f4&gt;** saves and closes buffer
+- **&lt;f7&gt;** creates new buffer
+- **&lt;f9&gt;** switches to previous buffer
+- **&lt;f10&gt;** switches to next buffer
+- **&lt;f12&gt;** closes buffer
 - **&lt;leader&gt;ss** toggles spell check
 - **&lt;leader&gt;ev** opens vimrc
 - **&lt;leader&gt;sv** applies vimrc

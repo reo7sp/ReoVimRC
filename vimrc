@@ -1,10 +1,10 @@
 
-"""""""""""""""""""""""""""""""""""""""
-"                                     "
-" Author: Reo_SP (http://reo7sp.ru)   "
-" Last update: Wed, 25 December 2014  "
-"                                     "
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""
+"                                            "
+" Author: Reo_SP (http://reo7sp.ru)          "
+" Github: https://github.com/reo7sp/ReoVimRC "
+"                                            "
+""""""""""""""""""""""""""""""""""""""""""""""
 
 " --- Neobundle start {{{
 
@@ -165,10 +165,10 @@ let g:airline_mode_map = {
 	\ }
 
 " nerd tree
-map <C-t> :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 
 " tag bar
-map <C-g> :TagbarToggle<CR>
+map <leader>g :TagbarToggle<CR>
 
 " ctrlp
 let g:ctrlp_working_path_mode = 0
@@ -178,7 +178,7 @@ map <c-m> :CtrlPMRUFiles<cr>
 let g:ctrlp_max_height = 20
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " comment it, if you don't want to use ag
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " easy motion
 map  / <Plug>(easymotion-sn)
@@ -219,9 +219,6 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 3)<CR>
 
 " syntastic
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
-
-" license
-let g:licenses_authors_name = 'Reo_SP' " change this value to your name
 
 " }}}
 
@@ -319,14 +316,14 @@ map <S-Insert> <C-r>+
 map! <S-Insert> <C-r>+
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-nmap <leader>w :w!<cr>
-nmap <leader>s :w!<cr>:bp<cr>:bd #<cr>
+nmap <f3> :w!<cr>
+nmap <f4> :w!<cr>:bp<cr>:bd #<cr>
 
 " Buffers
-nmap <leader>n :enew<cr>
-nmap <leader>o :bprevious<cr>
-nmap <leader>p :bnext<cr>
-nmap <leader>q :bp<cr>:bd #<cr>
+nmap <f7> :enew<cr>
+nmap <f9> :bprevious<cr>
+nmap <f10> :bnext<cr>
+nmap <f12> :bp<cr>:bd #<cr>
 
 " Other
 map <leader>ss :setlocal spell!<cr>
@@ -363,3 +360,8 @@ set nospell
 
 " }}}
 
+" --- User vimrc {{{
+
+source ~/.vimrc.user
+
+" }}}
