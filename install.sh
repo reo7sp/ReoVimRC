@@ -10,11 +10,12 @@ echo "Downloading neobundle"
 git clone https://github.com/Shougo/neobundle.vim $INSTALL_DIR/.vim/bundle/neobundle.vim
 
 echo
-echo "Copying vimrc"
+echo "Copying configs"
 cp vimrc $INSTALL_DIR/.vimrc
 if [ ! -f $INSTALL_DIR/.vimrc.user ]; then
 	cp vimrc.user $INSTALL_DIR/.vimrc.user
 fi
+cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0.mine
 
 echo
 echo "To enable fast search in ctrlp, please install ag"
