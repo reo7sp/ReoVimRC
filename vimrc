@@ -302,10 +302,6 @@ set autoread
 
 " --- Keyboard shortcuts {{{
 
-" General
-let mapleader = ","
-let g:mapleader = ","
-
 " Navigation
 map 0 ^
 nnoremap j gj

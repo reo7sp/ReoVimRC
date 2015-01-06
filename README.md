@@ -90,7 +90,6 @@ For this purpose there is **~/.vimrc.user.after** file which you can edit as you
 - multiple-cursors: **&lt;c-l&gt;** selects next occurence, **&lt;c-h&gt;** selects previous occurence, **&lt;c-j&gt;** skips occurence
 
 ### Vim
-- **,** is a **&lt;leader&gt;** key
 - **0** is **^**
 - **j** is **gj**
 - **k** is **gk**
