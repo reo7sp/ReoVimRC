@@ -85,6 +85,9 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'scrooloose/syntastic'
 
+" User
+source ~/.vimrc.user.install
+
 " }}}
 
 " --- Neobundle end {{{
@@ -362,6 +365,6 @@ set nospell
 
 " --- User vimrc {{{
 
-source ~/.vimrc.user
+source ~/.vimrc.user.after
 
 " }}}

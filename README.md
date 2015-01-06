@@ -17,7 +17,7 @@
 
 
 ## How to add custom settings
-For this purpose there is **~/.vimrc.user** file which you can edit as you want and changes won't be lost after this vimrc's update
+For this purpose there is **~/.vimrc.user.after** file which you can edit as you want and changes won't be lost after this vimrc's update. To add plugins use **~/.vimrc.user.install** file
 
 
 ## Plugins
