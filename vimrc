@@ -255,7 +255,6 @@ set showcmd
 set showmatch
 set mat=2
 set matchpairs+=<:>
-set guioptions=
 set confirm
 set title
 set more
@@ -263,6 +262,18 @@ set laststatus=2
 set foldenable
 set foldmethod=syntax
 set foldlevelstart=7
+
+" gvim
+set guioptions=
+if has("gui_running")
+	if has("gui_gtk2")
+		set guifont=Inconsolata\ 12
+	elseif has("gui_macvim")
+		set guifont=Menlo\ Regular:h14
+	elseif has("gui_win32")
+		set guifont=Consolas:h11:cANSI
+	endif
+endif
 
 " Navigation
 set incsearch
