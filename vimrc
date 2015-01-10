@@ -265,15 +265,6 @@ set foldlevelstart=7
 
 " gvim
 set guioptions=
-if has("gui_running")
-	if has("gui_gtk2")
-		set guifont=Inconsolata\ 12
-	elseif has("gui_macvim")
-		set guifont=Menlo\ Regular:h14
-	elseif has("gui_win32")
-		set guifont=Consolas:h11:cANSI
-	endif
-endif
 
 " Navigation
 set incsearch
@@ -326,14 +317,14 @@ map <S-Insert> <C-r>+
 map! <S-Insert> <C-r>+
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-nmap <f2> :w!<cr>
-nmap <f3> :w!<cr>:bp<cr>:bd #<cr>
+map <f2> :w!<cr>
+map <f3> :w!<cr>:bp<cr>:bd #<cr>
 
 " Buffers
-nmap <f7> :enew<cr>
-nmap <f9> :bprevious<cr>
-nmap <f10> :bnext<cr>
-nmap <f12> :bp<cr>:bd #<cr>
+map <f7> :enew<cr>
+map <f9> :bprevious<cr>
+map <f10> :bnext<cr>
+map <f12> :bp<cr>:bd #<cr>
 
 " Other
 map <leader>ss :setlocal spell!<cr>
