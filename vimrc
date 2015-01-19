@@ -231,12 +231,12 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 syntax on
 set t_vb=
 set tm=500
-set background=dark
-set t_Co=256
-let g:rehash256=1
 if !has("gui_running")
 	let g:gruvbox_italic=0
+	set t_Co=256
+	let g:rehash256=1
 endif
+set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
