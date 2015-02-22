@@ -1,3 +1,3 @@
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " comment it, if you don't use ag
 let g:licenses_authors_name = 'Reo_SP' " change this value to your name
-set guifont=Fantasque\ Sans\ Mono\ 12 " if you use other font gvim, change this
+set guifont=Fantasque\ Sans\ Mono\ 12 " if you use other font in gvim, change this

@@ -32,4 +32,9 @@ echo
 echo "Don't forget to edit ~/.vimrc.user.after"
 
 echo
+echo "To use YouCompleteMe plugin execute this commands"
+echo "cd ~/.vim/bundle/YouCompleteMe"
+echo "./install.sh --clang-completer --system-libclang --omnisharp-completer"
+
+echo
 echo "~~~ Happy coding with vim! ~~~"
