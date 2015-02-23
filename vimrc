@@ -61,7 +61,7 @@ NeoBundle 'ervandew/eclim' ", {
 	"\ 		'others' : 'ant',
 	"\ 	},
 	"\ }
-NeoBundle 'OmniSharp/omnisharp-vim'
+"NeoBundle 'OmniSharp/omnisharp-vim'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'Shougo/neocomplcache'
 "NeoBundle 'Shougo/neosnippet.vim'
