@@ -190,8 +190,8 @@ let g:airline_mode_map = {
 	\ }
 
 " yank stack
-map <s-p> <Plug>yankstack_substitute_older_paste
-map <s-[> <Plug>yankstack_substitute_newer_paste
+map <c-[> <Plug>yankstack_substitute_older_paste
+map <c-]> <Plug>yankstack_substitute_newer_paste
 
 " ulti snips
 let g:UltiSnipsExpandTrigger="<C-e>"
@@ -346,7 +346,6 @@ nnoremap j gj
 nnoremap k gk
 
 " Editing
-set pastetoggle=<f4>
 nnoremap gV `[v`]
 nnoremap <space> za
 map <S-Insert> <C-r>+
@@ -355,9 +354,10 @@ vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 map <f2> :w!<cr>
 map <f3> :w!<cr>:bp<cr>:bd #<cr>
+set pastetoggle=<f4>
 
 " Buffers
-map <f7> :enew<cr>
+map <f5> :enew<cr>
 map <f8> :bprevious<cr>
 map <f9> :bnext<cr>
 map <f12> :bp<cr>:bd #<cr>
