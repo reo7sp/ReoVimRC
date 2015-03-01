@@ -30,18 +30,20 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 	\ 'build' : {
-	\ 		'windows' : 'tools\\update-dll-mingw',
-	\ 		'cygwin' : 'make -f make_cygwin.mak',
-	\ 		'mac' : 'make -f make_mac.mak',
-	\ 		'linux' : 'make',
-	\ 		'unix' : 'gmake',
-	\ 	},
+	\		'windows' : 'tools\\update-dll-mingw',
+	\		'cygwin' : 'make -f make_cygwin.mak',
+	\		'mac' : 'make -f make_mac.mak',
+	\		'linux' : 'make',
+	\		'unix' : 'gmake',
+	\	},
 	\ }
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'xolox/vim-misc'
 
 " Navigation
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'sgur/ctrlp-extensions.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-scripts/a.vim'
@@ -53,13 +55,13 @@ NeoBundle 'xolox/vim-session'
 " Editing
 NeoBundle 'Valloric/YouCompleteMe' ", {
 	"\ 'build' : {
-	"\ 		'others' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-	"\ 	},
+	"\		'others' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+	"\	},
 	"\ }
 NeoBundle 'ervandew/eclim' ", {
 	"\ 'build' : {
-	"\ 		'others' : 'ant',
-	"\ 	},
+	"\		'others' : 'ant',
+	"\	},
 	"\ }
 "NeoBundle 'OmniSharp/omnisharp-vim'
 NeoBundle 'tpope/vim-surround'
@@ -160,6 +162,8 @@ NeoBundleCheck
 
 " youcompleteme
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+map gs :YcmCompleter GoTo<CR>
+map <leader>yr :YcmCompleter ReloadSolution<CR>
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
@@ -190,8 +194,8 @@ let g:airline_mode_map = {
 	\ }
 
 " yank stack
-map <c-[> <Plug>yankstack_substitute_older_paste
-map <c-]> <Plug>yankstack_substitute_newer_paste
+map <leader>p <Plug>yankstack_substitute_older_paste
+map <leader>P <Plug>yankstack_substitute_newer_paste
 
 " ulti snips
 let g:UltiSnipsExpandTrigger="<C-e>"
@@ -205,14 +209,13 @@ map <leader>t :NERDTreeToggle<CR>
 map <leader>g :TagbarToggle<CR>
 
 " ctrlp
-let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = '<c-f>'
-map <c-b> :CtrlPBuffer<cr>
-map <c-m> :CtrlPMRUFiles<cr>
-let g:ctrlp_max_height = 20
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'line', 'menu']
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+map <c-s> :CtrlPMixed<cr>
+map <c-g> :CtrlPMRUFiles<cr>
+map <leader>fu :CtrlPFunky<cr>
+map <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<cr>
 
 " easy motion
 map  / <Plug>(easymotion-sn)
