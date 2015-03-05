@@ -30,18 +30,20 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 	\ 'build' : {
-	\ 		'windows' : 'tools\\update-dll-mingw',
-	\ 		'cygwin' : 'make -f make_cygwin.mak',
-	\ 		'mac' : 'make -f make_mac.mak',
-	\ 		'linux' : 'make',
-	\ 		'unix' : 'gmake',
-	\ 	},
+	\		'windows' : 'tools\\update-dll-mingw',
+	\		'cygwin' : 'make -f make_cygwin.mak',
+	\		'mac' : 'make -f make_mac.mak',
+	\		'linux' : 'make',
+	\		'unix' : 'gmake',
+	\	},
 	\ }
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'xolox/vim-misc'
 
 " Navigation
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'sgur/ctrlp-extensions.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-scripts/a.vim'
@@ -53,13 +55,13 @@ NeoBundle 'xolox/vim-session'
 " Editing
 NeoBundle 'Valloric/YouCompleteMe' ", {
 	"\ 'build' : {
-	"\ 		'others' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-	"\ 	},
+	"\		'others' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+	"\	},
 	"\ }
 NeoBundle 'ervandew/eclim' ", {
 	"\ 'build' : {
-	"\ 		'others' : 'ant',
-	"\ 	},
+	"\		'others' : 'ant',
+	"\	},
 	"\ }
 "NeoBundle 'OmniSharp/omnisharp-vim'
 NeoBundle 'tpope/vim-surround'
@@ -76,9 +78,9 @@ NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'chrisbra/SudoEdit.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
-"NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'sjl/gundo.vim.git'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -87,6 +89,7 @@ NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
+NeoBundle 'sjl/badwolf'
 
 " File types
 NeoBundle 'groenewege/vim-less'
@@ -99,10 +102,13 @@ NeoBundle 'kchmck/vim-coffee-script'
 " Other
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'sjl/clam.vim'
 "NeoBundle 'scrooloose/syntastic'
 
 " User
-source ~/.vimrc.user.install
+if filereadable("~/.vimrc.user.install")
+    source ~/.vimrc.user.install
+endif
 
 " }}}
 
@@ -160,20 +166,23 @@ NeoBundleCheck
 
 " youcompleteme
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+map gs :YcmCompleter GoTo<CR>
+map <leader>yr :YcmCompleter ReloadSolution<CR>
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
 " airline
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_left_sep = ''
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
+"if !exists('g:airline_symbols')
+	"let g:airline_symbols = {}
+"endif
+"let g:airline_left_sep = ''
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_mode_map = {
 	\ '__' : '-',
@@ -190,8 +199,8 @@ let g:airline_mode_map = {
 	\ }
 
 " yank stack
-map <c-[> <Plug>yankstack_substitute_older_paste
-map <c-]> <Plug>yankstack_substitute_newer_paste
+map <leader>p <Plug>yankstack_substitute_older_paste
+map <leader>P <Plug>yankstack_substitute_newer_paste
 
 " ulti snips
 let g:UltiSnipsExpandTrigger="<C-e>"
@@ -205,27 +214,25 @@ map <leader>t :NERDTreeToggle<CR>
 map <leader>g :TagbarToggle<CR>
 
 " ctrlp
-let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = '<c-f>'
-map <c-b> :CtrlPBuffer<cr>
-map <c-m> :CtrlPMRUFiles<cr>
-let g:ctrlp_max_height = 20
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'line', 'menu']
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+map <c-s> :CtrlPMixed<cr>
+map <c-g> :CtrlPMRUFiles<cr>
+map <leader>fu :CtrlPFunky<cr>
+map <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<cr>
 
 " easy motion
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-nmap s <Plug>(easymotion-s)
+map s <Plug>(easymotion-s)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
-let g:EasyMotion_smartcase = 1
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
@@ -236,23 +243,24 @@ let g:multi_cursor_next_key='<C-l>'
 let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-j>'
 let g:multi_cursor_quit_key='<Esc>'
-function! Multiple_cursors_before()
-	if exists(':NeoCompleteLock')==2
-		exe 'NeoCompleteLock'
-	endif
-endfunction
-function! Multiple_cursors_after()
-	if exists(':NeoCompleteUnlock')==2
-		exe 'NeoCompleteUnlock'
-	endif
-endfunction
+
+"function! Multiple_cursors_before()
+	"if exists(':NeoCompleteLock')==2
+		"exe 'NeoCompleteLock'
+	"endif
+"endfunction
+"function! Multiple_cursors_after()
+	"if exists(':NeoCompleteUnlock')==2
+		"exe 'NeoCompleteUnlock'
+	"endif
+"endfunction
 
 " smooth scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 3)<CR>
 
-" syntastic
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+" gundo
+map <leader>u :GundoToggle<cr>
 
 " }}}
 
@@ -320,6 +328,9 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set completeopt=longest,menuone,preview
 set splitbelow
+set undofile
+set undoreload=10000
+set autowrite
 
 " Other
 set lazyredraw
@@ -333,8 +344,6 @@ set history=700
 set ttyfast
 set hidden
 set autoread
-set exrc
-set secure
 
 " }}}
 
@@ -355,6 +364,10 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 map <f2> :w!<cr>
 map <f3> :w!<cr>:bp<cr>:bd #<cr>
 set pastetoggle=<f4>
+vnoremap x "_x
+vnoremap X "_X
+vnoremap < <gv
+vnoremap > >gv
 
 " Buffers
 map <f5> :enew<cr>
@@ -398,6 +411,12 @@ set nospell
 
 " --- User vimrc {{{
 
-source ~/.vimrc.user.after
+if filereadable("~/.vimrc.user.after")
+    source ~/.vimrc.user.after
+endif
+
+if filereadable(".vimrc.local")
+	source .vimrc.local
+endif
 
 " }}}
