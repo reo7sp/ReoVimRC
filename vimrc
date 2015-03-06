@@ -81,6 +81,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'sjl/gundo.vim.git'
+NeoBundle 'osyo-manga/vim-over'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -100,6 +101,10 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'derekwyatt/vim-sbt'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'spf13/vim-preview'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
@@ -287,7 +292,7 @@ colorscheme gruvbox
 " Editor appearance
 set number
 set ruler
-set shortmess+=filmnrxoOtT
+set shortmess+=aIcT
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=onemore
 set cul
