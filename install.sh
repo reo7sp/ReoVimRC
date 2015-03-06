@@ -3,7 +3,7 @@
 INSTALL_DIR=~
 
 echo "> Creating folders..."
-mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,sessions,spell} -p
+mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell} -p
 
 echo
 echo "> Downloading neobundle..."

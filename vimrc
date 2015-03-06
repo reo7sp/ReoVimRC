@@ -90,6 +90,8 @@ NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'sjl/badwolf'
+NeoBundle 'oblitum/rainbow'
+NeoBundle "myusuf3/numbers.vim"
 
 " File types
 NeoBundle 'groenewege/vim-less'
@@ -262,6 +264,9 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 3)<CR>
 " gundo
 map <leader>u :GundoToggle<cr>
 
+" rainbow
+let g:rainbow_active = 1
+
 " }}}
 
 " --- Vim preferences {{{
@@ -282,7 +287,9 @@ colorscheme gruvbox
 " Editor appearance
 set number
 set ruler
-set shortmess+=aIc
+set shortmess+=filmnrxoOtT
+set viewoptions=folds,options,cursor,unix,slash
+set virtualedit=onemore
 set cul
 set scrolloff=5
 set sidescrolloff=5
@@ -327,10 +334,10 @@ set smarttab
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set completeopt=longest,menuone,preview
+set splitright
 set splitbelow
 set undofile
-set undoreload=10000
-set autowrite
+set autoread
 
 " Other
 set lazyredraw
@@ -339,11 +346,11 @@ set novisualbell
 set mouse=a
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
+set undodir=~/.vim/undo
 set shell=bash
 set history=700
 set ttyfast
 set hidden
-set autoread
 
 " }}}
 
@@ -368,23 +375,29 @@ vnoremap x "_x
 vnoremap X "_X
 vnoremap < <gv
 vnoremap > >gv
+inoremap jk <ESC>
 
 " Buffers
 map <f5> :enew<cr>
 map <f8> :bprevious<cr>
 map <f9> :bnext<cr>
 map <f12> :bp<cr>:bd #<cr>
+nnoremap <leader>w <C-w>v<C-w>l
 
 " Other
 map <leader>ss :setlocal spell!<cr>
 nmap <leader>ev :e $MYVIMRC<cr>
 nmap <leader>sv :so $MYVIMRC<cr>
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
 " }}}
 
 " --- Custom actions {{{
 
 autocmd BufEnter .vimrc setlocal foldmethod=marker
+au FocusLost * :wa
 
 " }}}
 
@@ -411,11 +424,11 @@ set nospell
 
 " --- User vimrc {{{
 
-if filereadable("~/.vimrc.user.after")
+if filereadable(expand("~/.vimrc.user.after"))
     source ~/.vimrc.user.after
 endif
 
-if filereadable(".vimrc.local")
+if filereadable(expand(".vimrc.local"))
 	source .vimrc.local
 endif
 
