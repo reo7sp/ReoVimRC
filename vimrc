@@ -112,7 +112,7 @@ NeoBundle 'sjl/clam.vim'
 "NeoBundle 'scrooloose/syntastic'
 
 " User
-if filereadable("~/.vimrc.user.install")
+if filereadable(expand("~/.vimrc.user.install"))
     source ~/.vimrc.user.install
 endif
 
