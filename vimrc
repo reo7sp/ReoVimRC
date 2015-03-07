@@ -90,7 +90,6 @@ NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
-NeoBundle 'sjl/badwolf'
 NeoBundle 'oblitum/rainbow'
 NeoBundle "myusuf3/numbers.vim"
 
