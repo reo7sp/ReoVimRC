@@ -76,12 +76,14 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'chrisbra/SudoEdit.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'sjl/gundo.vim.git'
 NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'tommcdo/vim-exchange'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-eunuch'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -110,6 +112,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'sjl/clam.vim'
 "NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-unimpaired'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
@@ -271,6 +274,20 @@ map <leader>u :GundoToggle<cr>
 " rainbow
 let g:rainbow_active = 1
 
+" tabularize
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+	let p = '^\s*|\s.*\s|\s*$'
+	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+		Tabularize/|/l1
+		normal! 0
+		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+	endif
+endfunction
+
 " }}}
 
 " --- Vim preferences {{{
@@ -375,11 +392,13 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 map <f2> :w!<cr>
 map <f3> :w!<cr>:bp<cr>:bd #<cr>
 set pastetoggle=<f4>
-vnoremap x "_x
-vnoremap X "_X
 vnoremap < <gv
 vnoremap > >gv
 inoremap jk <ESC>
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
 
 " Buffers
 map <f5> :enew<cr>
