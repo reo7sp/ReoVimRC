@@ -359,6 +359,7 @@ set splitright
 set splitbelow
 set undofile
 set autoread
+set autowriteall
 
 " Other
 set lazyredraw
@@ -419,8 +420,8 @@ vnoremap <F1> <ESC>
 
 " --- Custom actions {{{
 
-autocmd BufEnter .vimrc setlocal foldmethod=marker
-au FocusLost * :wa
+au BufEnter .vimrc setlocal foldmethod=marker
+au FocusLost * silent! wa
 
 " }}}
 
