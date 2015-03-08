@@ -122,6 +122,8 @@ NeoBundleCheck
 
 " }}}
 
+let mapleader = ","
+
 " --- Plugin settings {{{
 
 " youcompleteme
@@ -339,9 +341,6 @@ set hidden
 " }}}
 
 " --- Keyboard shortcuts {{{
-
-" Generic
-let mapleader = ","
 
 " Navigation
 map 0 ^
