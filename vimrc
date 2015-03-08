@@ -281,7 +281,6 @@ set scrolloff=5
 set sidescrolloff=5
 set list
 set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
-set nowrap
 set showmode
 set showcmd
 set showmatch
@@ -294,7 +293,7 @@ set laststatus=2
 set foldenable
 set foldmethod=syntax
 set foldlevelstart=7
-set wrap
+set wrap linebreak nolist
 
 " gvim
 set guioptions=
