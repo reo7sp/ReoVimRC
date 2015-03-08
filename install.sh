@@ -26,7 +26,6 @@ echo
 echo "To enable fast search in ctrlp, please install ag"
 echo "On ubuntu you can do it with:"
 echo "sudo apt-get install silverbullet-ag"
-echo "If you can't install, comment or delete the line in ~/.vimrc.user.after which mentions ag"
 
 echo
 echo "Don't forget to edit ~/.vimrc.user.after"

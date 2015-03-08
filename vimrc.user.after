@@ -1,3 +1,14 @@
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " comment it, if you don't use ag
 let g:licenses_authors_name = 'Reo_SP' " change this value to your name
 set guifont=Fantasque\ Sans\ Mono\ 12 " if you use other font in gvim, change this
+
+" uncomment this if you don't use powerline patched font
+"let g:airline_powerline_fonts = 1
+"if !exists('g:airline_symbols')
+	"let g:airline_symbols = {}
+"endif
+"let g:airline_left_sep = ''
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'

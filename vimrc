@@ -49,8 +49,10 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'vim-scripts/grep.vim'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'xolox/vim-session'
+NeoBundle 'haya14busa/vim-asterisk'
+NeoBundle 'boucherm/ShowMotion'
 
 " Editing
 NeoBundle 'Valloric/YouCompleteMe' ", {
@@ -58,16 +60,8 @@ NeoBundle 'Valloric/YouCompleteMe' ", {
 	"\		'others' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
 	"\	},
 	"\ }
-NeoBundle 'ervandew/eclim' ", {
-	"\ 'build' : {
-	"\		'others' : 'ant',
-	"\	},
-	"\ }
-"NeoBundle 'OmniSharp/omnisharp-vim'
+NeoBundle 'ervandew/eclim'
 NeoBundle 'tpope/vim-surround'
-"NeoBundle 'Shougo/neocomplcache'
-"NeoBundle 'Shougo/neosnippet.vim'
-"NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'terryma/vim-multiple-cursors'
@@ -111,7 +105,6 @@ NeoBundle 'spf13/vim-preview'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'sjl/clam.vim'
-"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-unimpaired'
 
 " User
@@ -131,48 +124,6 @@ NeoBundleCheck
 
 " --- Plugin settings {{{
 
-"" neo complcache
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_tags_caching_limit_file_size = 9999999
-"let g:neocomplcache_dictionary_filetype_lists = {
-	"\ 'default' : '',
-	"\ 'vimshell' : $HOME.'/.vimshell_hist',
-	"\ 'scheme' : $HOME.'/.gosh_completions'
-	"\ }
-
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-	"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-"endfunction
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-"let g:neocomplcache_same_filetype_lists = {}
-"let g:neocomplcache_same_filetype_lists._ = '_'
-
-"set omnifunc=syntaxcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
-
-"" neo snippets
-"let g:neosnippet#enable_snipmate_compatibility = 1
-"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-"imap <C-k> <Plug>(neosnippet_expand_or_jump)
-"smap <C-k> <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k> <Plug>(neosnippet_expand_target)
-"imap <expr><CR> neosnippet#expandable_or_jumpable() ?
-	"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
-"if has('conceal')
-	"set conceallevel=2 concealcursor=i
-"endif
-
 " youcompleteme
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 map gs :YcmCompleter GoTo<CR>
@@ -182,15 +133,6 @@ map <leader>yr :YcmCompleter ReloadSolution<CR>
 let g:EclimCompletionMethod = 'omnifunc'
 
 " airline
-"if !exists('g:airline_symbols')
-	"let g:airline_symbols = {}
-"endif
-"let g:airline_left_sep = ''
-"let g:airline_left_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_mode_map = {
@@ -225,8 +167,9 @@ map <leader>g :TagbarToggle<CR>
 " ctrlp
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'line', 'menu']
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-map <c-s> :CtrlPMixed<cr>
+if executable('ag')
+	let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
 map <c-g> :CtrlPMRUFiles<cr>
 map <leader>fu :CtrlPFunky<cr>
 map <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<cr>
@@ -236,7 +179,8 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-map s <Plug>(easymotion-s)
+map <c-s> <Plug>(easymotion-s)
+omap t <Plug>(easymotion-bd-tl)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
@@ -252,17 +196,6 @@ let g:multi_cursor_next_key='<C-l>'
 let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-j>'
 let g:multi_cursor_quit_key='<Esc>'
-
-"function! Multiple_cursors_before()
-	"if exists(':NeoCompleteLock')==2
-		"exe 'NeoCompleteLock'
-	"endif
-"endfunction
-"function! Multiple_cursors_after()
-	"if exists(':NeoCompleteUnlock')==2
-		"exe 'NeoCompleteUnlock'
-	"endif
-"endfunction
 
 " smooth scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
@@ -287,6 +220,35 @@ function! s:align()
 		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
 	endif
 endfunction
+
+" vim asterisk
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+" showmotion
+nmap w <Plug>(show-motion-both-w)
+nmap W <Plug>(show-motion-both-W)
+nmap b <Plug>(show-motion-both-b)
+nmap B <Plug>(show-motion-both-B)
+nmap e <Plug>(show-motion-both-e)
+nmap E <Plug>(show-motion-both-E)
+nmap f <Plug>(show-motion-f)
+nmap t <Plug>(show-motion-t)
+nmap F <Plug>(show-motion-F)
+nmap T <Plug>(show-motion-T)
+nmap ; <Plug>(show-motion-;)
+"nmap , <Plug>(show-motion-,)
+
+" ack
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
 
 " }}}
 
@@ -349,8 +311,6 @@ set nostartofline
 set autoindent
 set copyindent
 set smartindent
-set shiftwidth=4
-set tabstop=4
 set smarttab
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -358,6 +318,8 @@ set completeopt=longest,menuone,preview
 set splitright
 set splitbelow
 set undofile
+set shiftwidth=4
+set tabstop=4
 set autoread
 set autowriteall
 
@@ -378,6 +340,9 @@ set hidden
 
 " --- Keyboard shortcuts {{{
 
+" Generic
+let mapleader = ","
+
 " Navigation
 map 0 ^
 nnoremap j gj
@@ -385,11 +350,8 @@ nnoremap k gk
 
 " Editing
 nnoremap gV `[v`]
-nnoremap <space> za
 map <S-Insert> <C-r>+
 map! <S-Insert> <C-r>+
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
 map <f2> :w!<cr>
 map <f3> :w!<cr>:bp<cr>:bd #<cr>
 set pastetoggle=<f4>
@@ -400,6 +362,7 @@ nmap <C-Up> ddkP
 nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
+vnoremap // y/<C-R>"<CR>
 
 " Buffers
 map <f5> :enew<cr>
@@ -421,7 +384,6 @@ vnoremap <F1> <ESC>
 " --- Custom actions {{{
 
 au BufEnter .vimrc setlocal foldmethod=marker
-au FocusLost * silent! wa
 
 " }}}
 
@@ -449,7 +411,7 @@ set nospell
 " --- User vimrc {{{
 
 if filereadable(expand("~/.vimrc.user.after"))
-    source ~/.vimrc.user.after
+	source ~/.vimrc.user.after
 endif
 
 if filereadable(expand(".vimrc.local"))

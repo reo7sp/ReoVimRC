@@ -22,6 +22,8 @@ For this purpose there is **~/.vimrc.user.after** file which you can edit as you
 **~/.gtkrc-2.0.mine** file, which is used to fix border in gvim, won't be rewrited after update too, so you can also edit it as you want
 
 
+**Warning: this readme is outdated**
+
 ## Plugins
 
 ### General
