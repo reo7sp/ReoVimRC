@@ -49,7 +49,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'mileszs/ack.vim'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'haya14busa/vim-asterisk'
 NeoBundle 'boucherm/ShowMotion'
@@ -61,6 +61,7 @@ NeoBundle 'Valloric/YouCompleteMe' ", {
 	"\	},
 	"\ }
 NeoBundle 'ervandew/eclim'
+NeoBundle 'ktvoelker/sbt-vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
