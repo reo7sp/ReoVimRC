@@ -249,11 +249,6 @@ nmap T <Plug>(show-motion-T)
 nmap ; <Plug>(show-motion-;)
 "nmap , <Plug>(show-motion-,)
 
-" ack
-if executable('ag')
-	let g:ackprg = 'ag --vimgrep'
-endif
-
 " }}}
 
 " --- Vim preferences {{{
