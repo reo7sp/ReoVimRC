@@ -18,8 +18,6 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-let g:neobundle#install_process_timeout = 9999999
-
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " }}}
@@ -87,7 +85,7 @@ NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
-NeoBundle 'oblitum/rainbow'
+NeoBundle 'luochen1990/rainbow'
 NeoBundle "myusuf3/numbers.vim"
 
 " File types
@@ -378,7 +376,16 @@ vnoremap <F1> <ESC>
 
 " --- Custom actions {{{
 
-au BufEnter .vimrc setlocal foldmethod=marker
+augroup ftconf
+    au!
+    au FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup norainbow
+    au!
+    au FileType php,html,jinja :RainbowToggle
+    au FileType php,html,jinja syntax on
+augroup END
 
 " }}}
 
