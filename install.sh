@@ -34,7 +34,10 @@ echo
 echo "To install all plugins launch vim"
 
 echo
-echo "To use YouCompleteMe plugin execute these commands"
+echo "To activate eclim follow this tutorial http://eclim.org/install.html"
+
+echo
+echo "To activate YouCompleteMe plugin execute these commands"
 echo "cd ~/.vim/bundle/YouCompleteMe"
 echo "git submodule update --init --recursive"
 echo "./install.sh --clang-completer --system-libclang --omnisharp-completer"
