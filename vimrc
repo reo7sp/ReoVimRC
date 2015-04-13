@@ -256,7 +256,7 @@ nmap ; <Plug>(show-motion-;)
 " --- Vim preferences {{{
 
 " Syntax
-syntax on
+syntax enable
 set t_vb=
 set tm=500
 if !has("gui_running")
