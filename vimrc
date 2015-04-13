@@ -51,6 +51,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'haya14busa/vim-asterisk'
 NeoBundle 'boucherm/ShowMotion'
+NeoBundle 'tmhedberg/matchit'
 
 " Editing
 NeoBundle 'Valloric/YouCompleteMe' ", {
@@ -77,6 +78,9 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'spf13/PIV'
+NeoBundle 'fatih/vim-go'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -97,7 +101,6 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'derekwyatt/vim-sbt'
-NeoBundle 'fatih/vim-go'
 NeoBundle 'spf13/vim-preview'
 
 " Other
@@ -105,6 +108,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'sjl/clam.vim'
 NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'scrooloose/syntastic'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
@@ -379,12 +383,6 @@ vnoremap <F1> <ESC>
 augroup ftconf
     au!
     au FileType vim setlocal foldmethod=marker
-augroup END
-
-augroup norainbow
-    au!
-    au FileType php,html,jinja :RainbowToggle
-    au FileType php,html,jinja syntax on
 augroup END
 
 " }}}
