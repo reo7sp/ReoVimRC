@@ -307,7 +307,7 @@ set formatoptions=1
 " gvim
 set guioptions=
 set guiheadroom=0
-set linespace=2
+set linespace=3
 
 " Navigation
 set incsearch
