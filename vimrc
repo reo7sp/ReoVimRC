@@ -52,6 +52,7 @@ NeoBundle 'xolox/vim-session'
 NeoBundle 'haya14busa/vim-asterisk'
 NeoBundle 'boucherm/ShowMotion'
 NeoBundle 'tmhedberg/matchit'
+NeoBundle 'spiiph/vim-space'
 
 " Editing
 NeoBundle 'Valloric/YouCompleteMe' ", {
@@ -81,6 +82,8 @@ NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'spf13/PIV'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'vim-scripts/SyntaxComplete'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -90,7 +93,8 @@ NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'luochen1990/rainbow'
-NeoBundle "myusuf3/numbers.vim"
+NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " File types
 NeoBundle 'groenewege/vim-less'
@@ -100,6 +104,7 @@ NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'derekwyatt/vim-sbt'
 NeoBundle 'spf13/vim-preview'
 
@@ -173,9 +178,9 @@ map <leader>g :TagbarToggle<CR>
 " ctrlp
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'line', 'menu']
-if executable('ag')
-	let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-endif
+"if executable('ag')
+	"let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+"endif
 map <c-g> :CtrlPMRUFiles<cr>
 map <leader>fu :CtrlPFunky<cr>
 map <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<cr>
@@ -212,6 +217,9 @@ map <leader>u :GundoToggle<cr>
 
 " rainbow
 let g:rainbow_active = 1
+
+" syntastic
+let g:syntastic_check_on_open=1
 
 " tabularize
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -290,11 +298,16 @@ set more
 set laststatus=2
 set foldenable
 set foldmethod=syntax
-set foldlevelstart=7
-set wrap linebreak nolist
+set foldlevelstart=99
+set wrap
+set linebreak
+set breakindent
+set formatoptions=1
 
 " gvim
 set guioptions=
+set guiheadroom=0
+set linespace=2
 
 " Navigation
 set incsearch
@@ -378,11 +391,16 @@ vnoremap <F1> <ESC>
 
 " }}}
 
-" --- Custom actions {{{
+" --- Auto groups {{{
 
 augroup ftconf
     au!
     au FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup resCur
+    autocmd!
+    autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
 " }}}
