@@ -84,6 +84,7 @@ NeoBundle 'spf13/PIV'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'vim-scripts/SyntaxComplete'
+NeoBundle 'chrisbra/NrrwRgn'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -311,6 +312,7 @@ set linespace=3
 
 " Navigation
 set incsearch
+set hlsearch
 set ignorecase
 set smartcase
 set magic
@@ -363,8 +365,8 @@ nnoremap gV `[v`]
 map <S-Insert> <C-r>+
 map! <S-Insert> <C-r>+
 map <f2> :w!<cr>
-map <f3> :w!<cr>:bp<cr>:bd #<cr>
-set pastetoggle=<f4>
+"map <f3> :w!<cr>:bp<cr>:bd #<cr>
+set pastetoggle=<f3>
 vnoremap < <gv
 vnoremap > >gv
 inoremap jk <ESC>
@@ -373,9 +375,11 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 vnoremap // y/<C-R>"<CR>
+nnoremap <cr> :noh<cr><cr>
+map <f4> :noh<cr>
 
 " Buffers
-map <f5> :enew<cr>
+map <f7> :enew<cr>
 map <f8> :bprevious<cr>
 map <f9> :bnext<cr>
 map <f12> :bp<cr>:bd #<cr>
