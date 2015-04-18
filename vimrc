@@ -85,6 +85,7 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'vim-scripts/SyntaxComplete'
 NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'lfilho/cosco.vim'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -259,6 +260,10 @@ nmap F <Plug>(show-motion-F)
 nmap T <Plug>(show-motion-T)
 nmap ; <Plug>(show-motion-;)
 "nmap , <Plug>(show-motion-,)
+
+" cosco.vim
+nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
+inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
 
 " }}}
 
