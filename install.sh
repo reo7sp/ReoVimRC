@@ -23,13 +23,13 @@ if [ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]; then
 fi
 
 echo
-echo "Don't forget to edit ~/.vimrc.user.after"
+echo "Don't forget to edit ~/.vimrc.user.after."
 
 echo
-echo "To activate eclim server follow this tutorial http://eclim.org/install.html"
+echo "To activate eclim server follow this tutorial http://eclim.org/install.html."
 
 echo
-echo "To install all plugins launch vim"
+echo "To install all plugins launch vim."
 
 echo
 echo "~~~ Happy coding with vim! ~~~"

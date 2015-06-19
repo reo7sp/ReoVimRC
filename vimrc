@@ -20,7 +20,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 " }}}
 
-" --- NeoBundleins {{{
+" --- Plugins {{{
 
 " General
 NeoBundleFetch 'Shougo/neobundle.vim'
