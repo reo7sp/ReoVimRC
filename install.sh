@@ -23,24 +23,13 @@ if [ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]; then
 fi
 
 echo
-echo "To enable fast search in ctrlp, please install ag"
-echo "On ubuntu you can do it with:"
-echo "sudo apt-get install silverbullet-ag"
-
-echo
 echo "Don't forget to edit ~/.vimrc.user.after"
 
 echo
+echo "To activate eclim server follow this tutorial http://eclim.org/install.html"
+
+echo
 echo "To install all plugins launch vim"
-
-echo
-echo "To activate eclim follow this tutorial http://eclim.org/install.html"
-
-echo
-echo "To activate YouCompleteMe plugin execute these commands"
-echo "cd ~/.vim/bundle/YouCompleteMe"
-echo "git submodule update --init --recursive"
-echo "./install.sh --clang-completer --system-libclang --omnisharp-completer"
 
 echo
 echo "~~~ Happy coding with vim! ~~~"
