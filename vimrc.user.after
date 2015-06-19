@@ -2,7 +2,7 @@ let g:licenses_authors_name = 'Reo_SP' " change this value to your name
 set guifont=Fantasque\ Sans\ Mono\ 12 " if you use other font in gvim, change this
 
 " uncomment this if you don't use powerline patched font
-"let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 0
 "if !exists('g:airline_symbols')
 	"let g:airline_symbols = {}
 "endif

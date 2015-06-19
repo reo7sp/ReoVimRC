@@ -6,35 +6,33 @@
 "                                            "
 """"""""""""""""""""""""""""""""""""""""""""""
 
-" --- Neobundle start {{{
+" --- Init start {{{
 
 if !1 | finish | endif
 
 if has('vim_starting')
-	if &compatible
-		set nocompatible
-	endif
-
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set nocompatible
+    set runtimepath=~/.vim,$VIMRUNTIME
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " }}}
 
-" --- Plugins {{{
+" --- NeoBundleins {{{
 
 " General
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {
-	\ 'build' : {
-	\		'windows' : 'tools\\update-dll-mingw',
-	\		'cygwin' : 'make -f make_cygwin.mak',
-	\		'mac' : 'make -f make_mac.mak',
-	\		'linux' : 'make',
-	\		'unix' : 'gmake',
-	\	},
-	\ }
+\ 	'build': {
+\ 		'windows' : 'tools\\update-dll-mingw',
+\ 		'cygwin' : 'make -f make_cygwin.mak',
+\ 		'mac' : 'make -f make_mac.mak',
+\ 		'linux' : 'make',
+\ 		'unix' : 'gmake'
+\ 	}
+\ }
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'xolox/vim-misc'
 
@@ -44,7 +42,7 @@ NeoBundle 'sgur/ctrlp-extensions.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'vim-scripts/a.vim'
+NeoBundleLazy 'vim-scripts/a.vim', { 'autoload': { 'filetype': ['cc', 'cpp', 'cxx', 'C', 'c++', 'h', 'hh', 'hpp', 'hxx', 'h++'] } }
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'rking/ag.vim'
@@ -55,15 +53,19 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'spiiph/vim-space'
 
 " Editing
-NeoBundle 'Valloric/YouCompleteMe' ", {
-	"\ 'build' : {
-	"\		'others' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-	"\	},
-	"\ }
-NeoBundle 'ervandew/eclim'
-NeoBundle 'ktvoelker/sbt-vim'
+"NeoBundle 'Valloric/YouCompleteMe' ", {
+	""\ 'build': {
+	""\		'others': './install.sh --clang-completer --system-libclang --omnisharp-completer'
+	""\	}
+	""\ }
+"NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundleLazy 'ervandew/eclim', { 'autoload': { 'filetype': ['java', 'scala'] } }
+NeoBundleLazy 'ktvoelker/sbt-vim', { 'autoload': { 'filetype': 'scala' } }
+NeoBundleLazy 'justmao945/vim-clang', { 'autoload': { 'filetype': ['cc', 'cpp', 'cxx', 'C', 'c++', 'h', 'hh', 'hpp', 'hxx', 'h++'] } }
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'docunext/closetag.vim'
@@ -71,21 +73,23 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'sjl/gundo.vim.git'
+NeoBundle 'sjl/gundo.vim'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'spf13/PIV'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'marijnh/tern_for_vim'
+NeoBundleLazy 'spf13/PIV', { 'autoload': { 'filetype': 'php' } }
+NeoBundleLazy 'arnaud-lb/vim-php-namespace', { 'autoload': { 'filetype': 'php' } }
+NeoBundleLazy 'fatih/vim-go', { 'autoload': { 'filetype': 'go' } }
+NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetype': ['js', 'coffee', 'jsx'] } }
 NeoBundle 'vim-scripts/SyntaxComplete'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'lfilho/cosco.vim'
+NeoBundle 'craigemery/vim-autotag'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -95,20 +99,16 @@ NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'luochen1990/rainbow'
-NeoBundle 'myusuf3/numbers.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " File types
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'Glench/Vim-Jinja2-Syntax'
-NeoBundle 'derekwyatt/vim-scala'
+NeoBundleLazy 'groenewege/vim-less', { 'autoload': { 'filetype': 'less' } }
+NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload': { 'filetype': ['html', 'htm'] } }
+NeoBundleLazy 'derekwyatt/vim-scala', { 'autoload': { 'filetype': 'scala' } }
 NeoBundle 'vim-scripts/nginx.vim'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'derekwyatt/vim-sbt'
-NeoBundle 'spf13/vim-preview'
+NeoBundleLazy 'tpope/vim-markdown', { 'autoload': { 'filetype': 'md' } }
+NeoBundleLazy 'kchmck/vim-coffee-script', { 'autoload': { 'filetype': 'coffee' } }
+NeoBundleLazy 'pangloss/vim-javascript', { 'autoload': { 'filetype': 'js' } }
+NeoBundleLazy 'derekwyatt/vim-sbt', { 'autoload': { 'filetype': 'sbt' } }
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
@@ -124,23 +124,68 @@ endif
 
 " }}}
 
-" --- Neobundle end {{{
+" --- Init end {{{
 
 call neobundle#end()
+
 filetype plugin indent on
 NeoBundleCheck
+let mapleader = ","
 
 " }}}
-
-let mapleader = ","
 
 " --- Plugin settings {{{
 
 " youcompleteme
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-map gs :YcmCompleter GoTo<CR>
-map <leader>yr :YcmCompleter ReloadSolution<CR>
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"map gs :YcmCompleter GoTo<CR>
+"map <leader>yr :YcmCompleter ReloadSolution<CR>
+
+" ulti snips
+"let g:UltiSnipsExpandTrigger="<C-e>"
+"let g:UltiSnipsJumpForwardTrigger="<c-e>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
+
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" neosnippets
+imap <C-e> <Plug>(neosnippet_expand_or_jump)
+smap <C-e> <Plug>(neosnippet_expand_or_jump)
+xmap <C-e> <Plug>(neosnippet_expand_target)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+if has('conceal')
+    set conceallevel=2 concealcursor=niv
+endif
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
@@ -149,27 +194,22 @@ let g:EclimCompletionMethod = 'omnifunc'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_mode_map = {
-	\ '__' : '-',
-	\ 'n'  : 'N',
-	\ 'i'  : 'I',
-	\ 'R'  : 'R',
-	\ 'c'  : 'C',
-	\ 'v'  : 'V',
-	\ 'V'  : 'V',
-	\ '' : 'V',
-	\ 's'  : 'S',
-	\ 'S'  : 'S',
-	\ '' : 'S',
-	\ }
+\ 	'__' : '-',
+\ 	'n'  : 'N',
+\ 	'i'  : 'I',
+\ 	'R'  : 'R',
+\ 	'c'  : 'C',
+\ 	'v'  : 'V',
+\ 	'V'  : 'V',
+\ 	'' : 'V',
+\ 	's'  : 'S',
+\ 	'S'  : 'S',
+\ 	'' : 'S',
+\ }
 
 " yank stack
 map <leader>p <Plug>yankstack_substitute_older_paste
 map <leader>P <Plug>yankstack_substitute_newer_paste
-
-" ulti snips
-let g:UltiSnipsExpandTrigger="<C-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
 
 " nerd tree
 map <leader>t :NERDTreeToggle<CR>
@@ -248,18 +288,12 @@ map z#  <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
 
 " showmotion
-nmap w <Plug>(show-motion-both-w)
-nmap W <Plug>(show-motion-both-W)
-nmap b <Plug>(show-motion-both-b)
-nmap B <Plug>(show-motion-both-B)
-nmap e <Plug>(show-motion-both-e)
-nmap E <Plug>(show-motion-both-E)
 nmap f <Plug>(show-motion-f)
 nmap t <Plug>(show-motion-t)
 nmap F <Plug>(show-motion-F)
 nmap T <Plug>(show-motion-T)
 nmap ; <Plug>(show-motion-;)
-"nmap , <Plug>(show-motion-,)
+nmap \ <Plug>(show-motion-,)
 
 " cosco.vim
 nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
@@ -284,6 +318,7 @@ colorscheme gruvbox
 
 " Editor appearance
 set number
+set relativenumber
 set ruler
 set shortmess+=aIcT
 set viewoptions=folds,options,cursor,unix,slash
@@ -291,8 +326,8 @@ set virtualedit=onemore
 set cul
 set scrolloff=5
 set sidescrolloff=5
-set list
-set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
+"set list
+"set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
 set showmode
 set showcmd
 set showmatch
@@ -324,7 +359,7 @@ set magic
 set gdefault
 set wildmenu
 set wildmode=longest:full,full
-set wildignore=*.o,*~,*.pyc,.git/*,*.meta,.sync/*
+set wildignore+=*.o,*~,*.pyc,.git/*,*.meta,.sync/*
 set nostartofline
 
 " Editing
@@ -338,8 +373,6 @@ set completeopt=longest,menuone,preview
 set splitright
 set splitbelow
 set undofile
-set shiftwidth=4
-set tabstop=4
 set autoread
 set autowriteall
 
