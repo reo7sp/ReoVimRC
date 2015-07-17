@@ -44,13 +44,9 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundleLazy 'vim-scripts/a.vim', { 'autoload': { 'filetype': ['cc', 'cpp', 'cxx', 'C', 'c++', 'h', 'hh', 'hpp', 'hxx', 'h++'] } }
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'tpope/vim-abolish'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'xolox/vim-session'
-NeoBundle 'haya14busa/vim-asterisk'
-NeoBundle 'boucherm/ShowMotion'
 NeoBundle 'tmhedberg/matchit'
-NeoBundle 'spiiph/vim-space'
 
 " Editing
 "NeoBundle 'Valloric/YouCompleteMe' ", {
@@ -62,11 +58,12 @@ NeoBundle 'spiiph/vim-space'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'honza/vim-snippets'
 NeoBundleLazy 'ervandew/eclim', { 'autoload': { 'filetype': ['java', 'scala'] } }
+NeoBundleLazy 'OmniSharp/omnisharp-vim', { 'autoload': { 'filetype': 'cs' } }
 NeoBundleLazy 'ktvoelker/sbt-vim', { 'autoload': { 'filetype': 'scala' } }
 NeoBundleLazy 'justmao945/vim-clang', { 'autoload': { 'filetype': ['cc', 'cpp', 'cxx', 'C', 'c++', 'h', 'hh', 'hpp', 'hxx', 'h++'] } }
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'mattn/emmet-vim'
@@ -74,11 +71,8 @@ NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'sjl/gundo.vim'
 NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
@@ -87,32 +81,27 @@ NeoBundleLazy 'arnaud-lb/vim-php-namespace', { 'autoload': { 'filetype': 'php' }
 NeoBundleLazy 'fatih/vim-go', { 'autoload': { 'filetype': 'go' } }
 NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetype': ['js', 'coffee', 'jsx'] } }
 NeoBundle 'vim-scripts/SyntaxComplete'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'lfilho/cosco.vim'
 NeoBundle 'craigemery/vim-autotag'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'terryma/vim-smooth-scroll'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'luochen1990/rainbow'
 
 " File types
-NeoBundleLazy 'groenewege/vim-less', { 'autoload': { 'filetype': 'less' } }
-NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload': { 'filetype': ['html', 'htm'] } }
-NeoBundleLazy 'derekwyatt/vim-scala', { 'autoload': { 'filetype': 'scala' } }
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'Glench/Vim-Jinja2-Syntax'
+NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-scripts/nginx.vim'
-NeoBundleLazy 'tpope/vim-markdown', { 'autoload': { 'filetype': 'md' } }
-NeoBundleLazy 'kchmck/vim-coffee-script', { 'autoload': { 'filetype': 'coffee' } }
-NeoBundleLazy 'pangloss/vim-javascript', { 'autoload': { 'filetype': 'js' } }
-NeoBundleLazy 'derekwyatt/vim-sbt', { 'autoload': { 'filetype': 'sbt' } }
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'derekwyatt/vim-sbt'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'sjl/clam.vim'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'scrooloose/syntastic'
@@ -250,13 +239,6 @@ let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-j>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" smooth scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 3)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 3)<CR>
-
-" gundo
-map <leader>u :GundoToggle<cr>
-
 " rainbow
 let g:rainbow_active = 1
 
@@ -277,28 +259,6 @@ function! s:align()
 	endif
 endfunction
 
-" vim asterisk
-map *   <Plug>(asterisk-*)
-map #   <Plug>(asterisk-#)
-map g*  <Plug>(asterisk-g*)
-map g#  <Plug>(asterisk-g#)
-map z*  <Plug>(asterisk-z*)
-map gz* <Plug>(asterisk-gz*)
-map z#  <Plug>(asterisk-z#)
-map gz# <Plug>(asterisk-gz#)
-
-" showmotion
-nmap f <Plug>(show-motion-f)
-nmap t <Plug>(show-motion-t)
-nmap F <Plug>(show-motion-F)
-nmap T <Plug>(show-motion-T)
-nmap ; <Plug>(show-motion-;)
-nmap \ <Plug>(show-motion-,)
-
-" cosco.vim
-nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
-inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
-
 " }}}
 
 " --- Vim preferences {{{
@@ -307,12 +267,12 @@ inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
 syntax enable
 set t_vb=
 set tm=500
+set background=dark
 if !has("gui_running")
 	let g:gruvbox_italic=0
 	set t_Co=256
 	let g:rehash256=1
 endif
-set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
@@ -322,7 +282,6 @@ set relativenumber
 set ruler
 set shortmess+=aIcT
 set viewoptions=folds,options,cursor,unix,slash
-set virtualedit=onemore
 set cul
 set scrolloff=5
 set sidescrolloff=5
@@ -344,6 +303,8 @@ set wrap
 set linebreak
 set breakindent
 set formatoptions=1
+set shiftwidth=4
+set tabstop=4
 
 " gvim
 set guioptions=
