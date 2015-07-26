@@ -14,6 +14,7 @@ if has('vim_starting')
     set nocompatible
     set runtimepath=~/.vim,$VIMRUNTIME
     set runtimepath+=~/.vim/bundle/neobundle.vim/
+    filetype off
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -42,30 +43,24 @@ NeoBundle 'sgur/ctrlp-extensions.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundleLazy 'vim-scripts/a.vim', { 'autoload': { 'filetype': ['cc', 'cpp', 'cxx', 'C', 'c++', 'h', 'hh', 'hpp', 'hxx', 'h++'] } }
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'tmhedberg/matchit'
 
 " Editing
-"NeoBundle 'Valloric/YouCompleteMe' ", {
-	""\ 'build': {
-	""\		'others': './install.sh --clang-completer --system-libclang --omnisharp-completer'
-	""\	}
-	""\ }
-"NeoBundle 'SirVer/ultisnips'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
-NeoBundleLazy 'ervandew/eclim', { 'autoload': { 'filetype': ['java', 'scala'] } }
-NeoBundleLazy 'OmniSharp/omnisharp-vim', { 'autoload': { 'filetype': 'cs' } }
-NeoBundleLazy 'ktvoelker/sbt-vim', { 'autoload': { 'filetype': 'scala' } }
-NeoBundleLazy 'justmao945/vim-clang', { 'autoload': { 'filetype': ['cc', 'cpp', 'cxx', 'C', 'c++', 'h', 'hh', 'hpp', 'hxx', 'h++'] } }
+NeoBundle 'ervandew/eclim'
+NeoBundle 'OmniSharp/omnisharp-vim'
+NeoBundle 'ktvoelker/sbt-vim'
+NeoBundle 'justmao945/vim-clang'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'docunext/closetag.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'terryma/vim-expand-region'
@@ -76,10 +71,10 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundleLazy 'spf13/PIV', { 'autoload': { 'filetype': 'php' } }
-NeoBundleLazy 'arnaud-lb/vim-php-namespace', { 'autoload': { 'filetype': 'php' } }
-NeoBundleLazy 'fatih/vim-go', { 'autoload': { 'filetype': 'go' } }
-NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetype': ['js', 'coffee', 'jsx'] } }
+NeoBundle 'spf13/PIV'
+NeoBundle 'arnaud-lb/vim-php-namespace'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'vim-scripts/SyntaxComplete'
 NeoBundle 'craigemery/vim-autotag'
 
@@ -89,9 +84,9 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'luochen1990/rainbow'
+NeoBundle 'mhinz/vim-startify'
 
 " File types
-NeoBundle 'groenewege/vim-less'
 NeoBundle 'Glench/Vim-Jinja2-Syntax'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-scripts/nginx.vim'
@@ -99,6 +94,9 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'derekwyatt/vim-sbt'
+NeoBundle 'JulesWang/css.vim'
+NeoBundle 'genoma/vim-less'
+NeoBundle 'wavded/vim-stylus'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
@@ -125,17 +123,6 @@ let mapleader = ","
 
 " --- Plugin settings {{{
 
-" youcompleteme
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"map gs :YcmCompleter GoTo<CR>
-"map <leader>yr :YcmCompleter ReloadSolution<CR>
-
-" ulti snips
-"let g:UltiSnipsExpandTrigger="<C-e>"
-"let g:UltiSnipsJumpForwardTrigger="<c-e>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
-
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -143,9 +130,8 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+imap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+imap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -196,25 +182,23 @@ let g:airline_mode_map = {
 \ 	'' : 'S',
 \ }
 
-" yank stack
-map <leader>p <Plug>yankstack_substitute_older_paste
-map <leader>P <Plug>yankstack_substitute_newer_paste
-
 " nerd tree
-map <leader>t :NERDTreeToggle<CR>
+noremap <leader>tt :NERDTreeToggle<CR>
+noremap <leader>tf :NERDTreeFind<CR>
+noremap <leader>td :NERDTreeCWD<CR>
+noremap <leader>tc :NERDTreeClose<CR>
 
 " tag bar
-map <leader>g :TagbarToggle<CR>
+noremap <leader>g :TagbarToggle<CR>
 
 " ctrlp
 let g:ctrlp_map = '<c-f>'
-let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'line', 'menu']
-"if executable('ag')
-	"let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-"endif
-map <c-g> :CtrlPMRUFiles<cr>
-map <leader>fu :CtrlPFunky<cr>
-map <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<cr>
+let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'menu']
+noremap <c-g> :CtrlPFunky<cr>
+noremap <c-p> :CtrlPMenu<cr>
+if executable('git')
+    let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+endif
 
 " easy motion
 map  / <Plug>(easymotion-sn)
@@ -238,6 +222,16 @@ let g:multi_cursor_next_key='<C-l>'
 let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-j>'
 let g:multi_cursor_quit_key='<Esc>'
+function! Multiple_cursors_before()
+    if exists(':NeoCompleteLock')==2
+	exe 'NeoCompleteLock'
+    endif
+endfunction
+function! Multiple_cursors_after()
+    if exists(':NeoCompleteUnlock')==2
+	exe 'NeoCompleteUnlock'
+    endif
+endfunction
 
 " rainbow
 let g:rainbow_active = 1
@@ -258,6 +252,13 @@ function! s:align()
 		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
 	endif
 endfunction
+
+" vim php namespace
+inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+noremap <Leader>u :call PhpInsertUse()<CR>
+
+" startify
+let g:startify_session_dir = '~/.vim/sessions'
 
 " }}}
 
@@ -305,6 +306,7 @@ set breakindent
 set formatoptions=1
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 
 " gvim
 set guioptions=
@@ -361,33 +363,34 @@ nnoremap k gk
 
 " Editing
 nnoremap gV `[v`]
-map <S-Insert> <C-r>+
-map! <S-Insert> <C-r>+
-map <f2> :w!<cr>
-"map <f3> :w!<cr>:bp<cr>:bd #<cr>
+noremap <S-Insert> <C-r>+
+noremap! <S-Insert> <C-r>+
+noremap <f2> :w!<cr>
+"noremap <f3> :w!<cr>:bp<cr>:bd #<cr>
 set pastetoggle=<f3>
 vnoremap < <gv
 vnoremap > >gv
 inoremap jk <ESC>
-nmap <C-Up> ddkP
-nmap <C-Down> ddp
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
+nnoremap <C-Up> ddkP
+nnoremap <C-Down> ddp
+vnoremap <C-Up> xkP`[V`]
+vnoremap <C-Down> xp`[V`]
 vnoremap // y/<C-R>"<CR>
 nnoremap <cr> :noh<cr><cr>
-map <f4> :noh<cr>
+noremap <f4> :noh<cr>
 
 " Buffers
-map <f7> :enew<cr>
-map <f8> :bprevious<cr>
-map <f9> :bnext<cr>
-map <f12> :bp<cr>:bd #<cr>
+noremap <f7> :enew<cr>
+noremap <f8> :bprevious<cr>
+noremap <f9> :bnext<cr>
+noremap <f12> :bp<cr>:bd #<cr>
 nnoremap <leader>w <C-w>v<C-w>l
 
 " Other
-map <leader>ss :setlocal spell!<cr>
-nmap <leader>ev :e $MYVIMRC<cr>
-nmap <leader>sv :so $MYVIMRC<cr>
+noremap <leader>ss :setlocal spell!<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>sv :so $MYVIMRC<cr>
+nnoremap <leader>rt :!ctags -R .<cr>
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -401,7 +404,7 @@ augroup ftconf
     au FileType vim setlocal foldmethod=marker
 augroup END
 
-augroup resCur
+augroup restoreCursor
     autocmd!
     autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END

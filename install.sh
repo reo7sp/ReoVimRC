@@ -30,6 +30,7 @@ echo "To activate eclim server follow this tutorial http://eclim.org/install.htm
 
 echo
 echo "To install all plugins launch vim."
+echo "After plugin install vim may freeze for some time because of helptags generation"
 
 echo
 echo "~~~ Happy coding with vim! ~~~"
