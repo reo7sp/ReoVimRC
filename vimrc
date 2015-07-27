@@ -87,7 +87,7 @@ NeoBundle 'luochen1990/rainbow'
 NeoBundle 'mhinz/vim-startify'
 
 " File types
-NeoBundle 'Glench/Vim-Jinja2-Syntax'
+NeoBundle 'lepture/vim-jinja'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'tpope/vim-markdown'
@@ -259,6 +259,7 @@ noremap <Leader>u :call PhpInsertUse()<CR>
 
 " startify
 let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_files_number = 5
 
 " }}}
 
