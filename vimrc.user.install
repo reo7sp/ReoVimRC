@@ -1,0 +1,9 @@
+" Uncomment any of these lines to install appropriate plugin
+"NeoBundle 'OmniSharp/omnisharp-vim'
+"NeoBundle 'ervandew/eclim'
+"NeoBundle 'ktvoelker/sbt-vim'
+"NeoBundle 'justmao945/vim-clang'
+"NeoBundle 'spf13/PIV'
+"NeoBundle 'arnaud-lb/vim-php-namespace'
+"NeoBundle 'fatih/vim-go'
+"NeoBundle 'marijnh/tern_for_vim'

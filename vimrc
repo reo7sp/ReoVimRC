@@ -55,28 +55,16 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'ervandew/eclim'
-NeoBundle 'OmniSharp/omnisharp-vim'
-NeoBundle 'ktvoelker/sbt-vim'
-NeoBundle 'justmao945/vim-clang'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'spf13/PIV'
-NeoBundle 'arnaud-lb/vim-php-namespace'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'vim-scripts/SyntaxComplete'
-NeoBundle 'craigemery/vim-autotag'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -87,16 +75,16 @@ NeoBundle 'luochen1990/rainbow'
 NeoBundle 'mhinz/vim-startify'
 
 " File types
-NeoBundle 'lepture/vim-jinja'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'derekwyatt/vim-sbt'
-NeoBundle 'JulesWang/css.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'genoma/vim-less'
 NeoBundle 'wavded/vim-stylus'
+NeoBundle 'ekalinin/Dockerfile.vim'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
@@ -130,8 +118,6 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-imap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-imap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -144,23 +130,21 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " neosnippets
-imap <C-e> <Plug>(neosnippet_expand_or_jump)
-smap <C-e> <Plug>(neosnippet_expand_or_jump)
-xmap <C-e> <Plug>(neosnippet_expand_target)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
 if has('conceal')
     set conceallevel=2 concealcursor=niv
 endif
+imap <C-e> <Plug>(neosnippet_expand_or_jump)
+smap <C-e> <Plug>(neosnippet_expand_or_jump)
+xmap <C-e> <Plug>(neosnippet_expand_target)
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
@@ -287,8 +271,8 @@ set viewoptions=folds,options,cursor,unix,slash
 set cul
 set scrolloff=5
 set sidescrolloff=5
-"set list
-"set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
+set list
+set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
 set showmode
 set showcmd
 set showmatch

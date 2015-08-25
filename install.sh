@@ -26,9 +26,6 @@ echo
 echo "Don't forget to edit ~/.vimrc.user.after."
 
 echo
-echo "To activate eclim server follow this tutorial http://eclim.org/install.html."
-
-echo
 echo "To install all plugins launch vim."
 echo "After plugin install vim may freeze for some time because of helptags generation"
 
