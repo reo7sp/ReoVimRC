@@ -241,6 +241,13 @@ endfunction
 inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
 noremap <Leader>u :call PhpInsertUse()<CR>
 
+" vim session
+let g:session_autoload = 'no'
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 5
+let g:session_autosave_silent = 1
+let g:session_command_aliases = 1
+
 " startify
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_files_number = 5
