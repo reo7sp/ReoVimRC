@@ -65,6 +65,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'idanarye/vim-vebugger'
 NeoBundle 'fatih/vim-go'
 
 " Appearance
