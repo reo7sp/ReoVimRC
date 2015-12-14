@@ -66,7 +66,6 @@ NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'idanarye/vim-vebugger'
-NeoBundle 'fatih/vim-go'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -76,7 +75,7 @@ NeoBundle 'morhetz/gruvbox'
 NeoBundle 'luochen1990/rainbow'
 NeoBundle 'mhinz/vim-startify'
 
-" File types
+" File type specific
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'tpope/vim-markdown'
@@ -87,6 +86,8 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'genoma/vim-less'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'justmao945/vim-clang'
+NeoBundle 'fatih/vim-go'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
@@ -120,11 +121,7 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+set omnifunc=syntaxcomplete#Complete
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
@@ -224,7 +221,6 @@ let g:rainbow_active = 1
 
 " syntastic
 let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -Wall '
 
 " tabularize
@@ -424,7 +420,7 @@ set iminsert=0
 set imsearch=0
 
 " Other
-set spell
+set nospell
 
 " }}}
 
