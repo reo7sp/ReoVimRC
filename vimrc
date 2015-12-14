@@ -224,6 +224,8 @@ let g:rainbow_active = 1
 
 " syntastic
 let g:syntastic_check_on_open=1
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -Wall '
 
 " tabularize
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -238,10 +240,6 @@ function! s:align()
 		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
 	endif
 endfunction
-
-" vim php namespace
-inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
-noremap <Leader>u :call PhpInsertUse()<CR>
 
 " vim session
 let g:session_autoload = 'no'
@@ -373,10 +371,6 @@ set pastetoggle=<f3>
 vnoremap < <gv
 vnoremap > >gv
 inoremap jk <ESC>
-nnoremap <C-Up> ddkP
-nnoremap <C-Down> ddp
-vnoremap <C-Up> xkP`[V`]
-vnoremap <C-Down> xp`[V`]
 vnoremap // y/<C-R>"<CR>
 nnoremap <cr> :noh<cr><cr>
 noremap <f4> :noh<cr>
@@ -430,7 +424,7 @@ set iminsert=0
 set imsearch=0
 
 " Other
-set nospell
+set spell
 
 " }}}
 
