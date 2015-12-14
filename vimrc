@@ -66,6 +66,7 @@ NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'idanarye/vim-vebugger'
+NeoBundle 'tpope/vim-dispatch'
 
 " Appearance
 NeoBundle 'bling/vim-airline'
@@ -221,7 +222,7 @@ let g:rainbow_active = 1
 
 " syntastic
 let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -Wall '
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -Wall '
 
 " tabularize
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -255,6 +256,10 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_fail_silently = 1
+
+" vim clang
+let g:clang_check_syntax_auto = 0
+let g:clang_cpp_options = '-std=c++ -stdlib=libc++'
 
 " }}}
 
