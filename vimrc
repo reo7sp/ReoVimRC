@@ -41,54 +41,59 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'sgur/ctrlp-extensions.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'majutsushi/tagbar'
+
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'majutsushi/tagbar'
+
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'xolox/vim-session'
+
+NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'tmhedberg/matchit'
 
+NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'xolox/vim-session'
+
 " Editing
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'antoyo/vim-licenses'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'tpope/vim-sleuth'
+
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'antoyo/vim-licenses'
+NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'idanarye/vim-vebugger'
 NeoBundle 'tpope/vim-dispatch'
 
 " Appearance
-NeoBundle 'bling/vim-airline'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'luochen1990/rainbow'
+NeoBundle 'gregsexton/MatchTag'
+
+NeoBundle 'bling/vim-airline'
+NeoBundle 'airblade/vim-gitgutter'
+
 NeoBundle 'mhinz/vim-startify'
 
 " File type specific
 NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'vim-scripts/nginx.vim'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'derekwyatt/vim-sbt'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'genoma/vim-less'
 NeoBundle 'wavded/vim-stylus'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'justmao945/vim-clang'
-NeoBundle 'fatih/vim-go'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
@@ -115,36 +120,32 @@ let mapleader = ","
 
 " --- Plugin settings {{{
 
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-set omnifunc=syntaxcomplete#Complete
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" youcompleteme
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tags_files = 1
+nnoremap <leader>yti :YcmCompleter GoToInclude<CR>
+nnoremap <leader>ytd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>ytf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>ytt :YcmCompleter GoTo<CR>
+nnoremap <leader>ytc :YcmCompleter GoToImprecise<CR>
+nnoremap <leader>ytr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>ytl :YcmCompleter GoToImplementation<CR>
+nnoremap <leader>yte :YcmCompleter GoToImplementationElseDeclaration<CR>
+nnoremap <leader>ygt :YcmCompleter GetType<CR>
+nnoremap <leader>ygp :YcmCompleter GetParent<CR>
+nnoremap <leader>ygd :YcmCompleter GetDoc<CR>
+nnoremap <leader>yf :YcmCompleter FixIt<CR>
+nnoremap <leader>yss :YcmCompleter StartServer<CR>
+nnoremap <leader>yst :YcmCompleter StopServer<CR>
+nnoremap <leader>ysr :YcmCompleter RestartServer<CR>
+nnoremap <leader>yrs :YcmCompleter ReloadSolution<CR>
+nnoremap <leader>ysc :YcmCompleter ClearCompilationFlagCache<CR>
 
-" neosnippets
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-if has('conceal')
-    set conceallevel=2 concealcursor=niv
-endif
-imap <C-e> <Plug>(neosnippet_expand_or_jump)
-smap <C-e> <Plug>(neosnippet_expand_or_jump)
-xmap <C-e> <Plug>(neosnippet_expand_target)
+" ulti snips
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
@@ -190,7 +191,6 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 map <c-s> <Plug>(easymotion-s)
-omap t <Plug>(easymotion-bd-tl)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
@@ -206,27 +206,16 @@ let g:multi_cursor_next_key='<C-l>'
 let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-j>'
 let g:multi_cursor_quit_key='<Esc>'
-function! Multiple_cursors_before()
-    if exists(':NeoCompleteLock')==2
-	exe 'NeoCompleteLock'
-    endif
-endfunction
-function! Multiple_cursors_after()
-    if exists(':NeoCompleteUnlock')==2
-	exe 'NeoCompleteUnlock'
-    endif
-endfunction
 
 " rainbow
 let g:rainbow_active = 1
 
 " syntastic
 let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -Wall '
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -Wall '
 
 " tabularize
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
 function! s:align()
 	let p = '^\s*|\s.*\s|\s*$'
 	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -249,17 +238,8 @@ let g:session_command_aliases = 1
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_files_number = 5
 
-" vim-go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_fail_silently = 1
-
-" vim clang
-let g:clang_check_syntax_auto = 0
-let g:clang_cpp_options = '-std=c++14'
+" vim-scala
+let g:scala_use_default_keymappings = 0
 
 " }}}
 
@@ -281,36 +261,41 @@ colorscheme gruvbox
 " Editor appearance
 set number
 set relativenumber
-set ruler
-set shortmess+=aIcT
-set viewoptions=folds,options,cursor,unix,slash
 set cul
+set showmatch
 set scrolloff=5
 set sidescrolloff=5
-set list
-set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
-set showmode
-set showcmd
-set showmatch
-set mat=2
-set matchpairs+=<:>
-set confirm
-set title
-set more
-set laststatus=2
-set foldenable
-set foldmethod=syntax
-set foldlevelstart=99
-set wrap
-set linebreak
-set breakindent
-set formatoptions=1
+
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 
+set list
+set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
+
+set mat=2
+set matchpairs+=<:>
+
+set shortmess+=aIcT
+set title
+set confirm
+set more
+set laststatus=2
+set ruler
+set showmode
+set showcmd
+
+set foldenable
+set foldmethod=syntax
+set foldlevelstart=99
+
+set wrap
+set linebreak
+set breakindent
+set showbreak=+++\ 
+
 " gvim
-set guioptions=
+set guioptions=aegi
 set guiheadroom=0
 set linespace=3
 
@@ -319,11 +304,14 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+
 set magic
 set gdefault
+
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.o,*~,*.pyc,.git/*,*.meta,.sync/*
+
 set nostartofline
 
 " Editing
@@ -331,11 +319,16 @@ set autoindent
 set copyindent
 set smartindent
 set smarttab
+
+set viewoptions=folds,cursor,unix,slash
+
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+
 set completeopt=longest,menuone,preview
 set splitright
 set splitbelow
+
 set undofile
 set autoread
 set autowriteall
@@ -345,13 +338,18 @@ set lazyredraw
 set noerrorbells
 set novisualbell
 set mouse=a
+
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set undodir=~/.vim/undo
+set viewdir=~/.vim/view
 set shell=bash
+
 set history=700
 set ttyfast
 set hidden
+set exrc
+set secure
 
 " }}}
 
@@ -363,34 +361,34 @@ nnoremap j gj
 nnoremap k gk
 
 " Editing
-nnoremap gV `[v`]
 noremap <S-Insert> <C-r>+
 noremap! <S-Insert> <C-r>+
-noremap <f2> :w!<cr>
-"noremap <f3> :w!<cr>:bp<cr>:bd #<cr>
 set pastetoggle=<f3>
+
 vnoremap < <gv
 vnoremap > >gv
+
 inoremap jk <ESC>
-vnoremap // y/<C-R>"<CR>
 nnoremap <cr> :noh<cr><cr>
 noremap <f4> :noh<cr>
 
 " Buffers
+nnoremap <leader>w <C-w>v<C-w>l
+noremap <f2> :w!<cr>
 noremap <f7> :enew<cr>
 noremap <f8> :bprevious<cr>
 noremap <f9> :bnext<cr>
 noremap <f12> :bp<cr>:bd #<cr>
-nnoremap <leader>w <C-w>v<C-w>l
 
 " Other
-noremap <leader>ss :setlocal spell!<cr>
+nnoremap <leader>ss :setlocal spell!<cr>
+
+nnoremap <leader>rt :!ctags --fields=+l -R .<cr>
+
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :so $MYVIMRC<cr>
-nnoremap <leader>rt :!ctags -R .<cr>
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+
+noremap <F1> <ESC>
 
 " }}}
 
@@ -399,11 +397,6 @@ vnoremap <F1> <ESC>
 augroup ftconf
     au!
     au FileType vim setlocal foldmethod=marker
-augroup END
-
-augroup restoreCursor
-    autocmd!
-    autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
 " }}}
@@ -433,10 +426,6 @@ set nospell
 
 if filereadable(expand("~/.vimrc.user.after"))
 	source ~/.vimrc.user.after
-endif
-
-if filereadable(expand(".vimrc.local"))
-	source .vimrc.local
 endif
 
 " }}}
