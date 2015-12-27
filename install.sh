@@ -50,6 +50,7 @@ if confirm "Do you want to compile YouCompleteMe plugin now?"; then
 	confirm "With C# support?"                 && installcmd+=" --omnisharp-completer"
 	confirm "With Go support?"                 && installcmd+=" --gocode-completer"
 	confirm "With JavaScript support?"         && installcmd+=" --tern-completer"
+	confirm "To compile the plugin python, cmake, c++ compiler, various c++ build tools and python-dev package must be installed. And also depending on what you have chosen later mono, nodejs and npm must be installed too. Continue compiling YouCompleteMe?"
 
 	echo
 	echo "> Downloading YouCompleteMe..."
