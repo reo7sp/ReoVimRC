@@ -259,7 +259,7 @@ let g:go_fmt_fail_silently = 1
 
 " vim clang
 let g:clang_check_syntax_auto = 0
-let g:clang_cpp_options = '-std=c++ -stdlib=libc++'
+let g:clang_cpp_options = '-std=c++14'
 
 " }}}
 
