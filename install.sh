@@ -37,6 +37,9 @@ fi
 if [ ! -f $INSTALL_DIR/.vimrc.user.after ]; then
 	cp vimrc.user.after $INSTALL_DIR/.vimrc.user.after
 fi
+if [ ! -f $INSTALL_DIR/.gtkrc-2.0 ]; then
+	cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0
+fi
 if [ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]; then
 	cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0.mine
 fi
