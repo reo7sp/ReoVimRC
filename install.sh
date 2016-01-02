@@ -43,6 +43,9 @@ fi
 if [ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]; then
 	cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0.mine
 fi
+if [ ! -f $INSTALL_DIR/.ycm_extra_conf.py ]; then
+	cp ycm_extra_conf.py $INSTALL_DIR/.ycm_extra_conf.py
+fi
 
 
 # youcompleteme setup
