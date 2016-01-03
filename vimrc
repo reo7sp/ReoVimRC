@@ -17,6 +17,7 @@ if has('vim_starting')
     filetype off
 endif
 
+let g:neobundle#install_process_timeout = 1500
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " }}}
@@ -52,11 +53,12 @@ NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'tmhedberg/matchit'
 
 NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'rking/ag.vim'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'xolox/vim-session'
 
 " Editing
 NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'rdnetto/YCM-Generator'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
@@ -65,6 +67,8 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'jdelkins/vim-correction'
+NeoBundle 'reedes/vim-wordy'
 
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'godlygeek/tabular'
@@ -92,6 +96,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'genoma/vim-less'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'spf13/vim-preview'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
 
@@ -100,6 +105,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'sjl/clam.vim'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'reedes/vim-one'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
@@ -122,6 +128,7 @@ let mapleader = ","
 
 " youcompleteme
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
 nnoremap <leader>yti :YcmCompleter GoToInclude<CR>
 nnoremap <leader>ytd :YcmCompleter GoToDeclaration<CR>
@@ -148,6 +155,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
+
+" color_coded
+ if &diff
+   let g:color_coded_enabled = 0
+ endif
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -240,6 +252,11 @@ let g:startify_files_number = 5
 " vim-scala
 let g:scala_use_default_keymappings = 0
 
+" ack.vim
+if executable('ag')
+   let g:ackprg = 'ag --vimgrep'
+endif
+
 " }}}
 
 " --- Vim preferences {{{
@@ -294,7 +311,7 @@ set breakindent
 set showbreak=+++\ 
 
 " gvim
-set guioptions=aegi
+set guioptions=agi
 set guiheadroom=0
 set linespace=3
 
@@ -371,6 +388,41 @@ inoremap jk <ESC>
 nnoremap <cr> :noh<cr><cr>
 noremap <f4> :noh<cr>
 
+nnoremap <leader>ss :setlocal spell!<cr>
+nnoremap <leader>sf z=<cr>
+
+nnoremap <S-up> V
+nnoremap <S-left> v
+nnoremap <S-down> V
+nnoremap <S-right> v
+xnoremap <S-up> k
+xnoremap <S-left> h
+xnoremap <S-down> j
+xnoremap <S-right> l
+snoremap <S-up> <up>
+snoremap <S-left> <left>
+snoremap <S-down> <down>
+snoremap <S-right> <right>
+onoremap <S-up> k
+onoremap <S-left> h
+onoremap <S-down> j
+onoremap <S-right> l
+inoremap <S-up> <ESC>gH
+inoremap <S-left> <ESC>gh
+inoremap <S-down> <ESC>gH
+inoremap <S-right> <ESC>gh
+
+nnoremap <leader>f0 :set foldlevel=0<CR>
+nnoremap <leader>f1 :set foldlevel=1<CR>
+nnoremap <leader>f2 :set foldlevel=2<CR>
+nnoremap <leader>f3 :set foldlevel=3<CR>
+nnoremap <leader>f4 :set foldlevel=4<CR>
+nnoremap <leader>f5 :set foldlevel=5<CR>
+nnoremap <leader>f6 :set foldlevel=6<CR>
+nnoremap <leader>f7 :set foldlevel=7<CR>
+nnoremap <leader>f8 :set foldlevel=8<CR>
+nnoremap <leader>f9 :set foldlevel=9<CR>
+
 " Buffers
 nnoremap <leader>w <C-w>v<C-w>l
 noremap <f2> :w!<cr>
@@ -380,8 +432,6 @@ noremap <f9> :bnext<cr>
 noremap <f12> :bp<cr>:bd #<cr>
 
 " Other
-nnoremap <leader>ss :setlocal spell!<cr>
-
 nnoremap <leader>rt :!ctags --fields=+l -R .<cr>
 
 nnoremap <leader>ev :e $MYVIMRC<cr>
