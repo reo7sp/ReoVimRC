@@ -18,8 +18,8 @@ INSTALL_DIR=~
 # vimrc setup
 depok=2
 echo "Required dependencies:"
-echo -n "    vim                                                             " ; hash vim 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
 echo -n "    git                                                             " ; hash git 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
+echo -n "    ag or ack if you want to search in files                        " ; hash ag 2>/dev/null && echo "OK. Found ag" || { hash ack 2>/dev/null && echo "OK. Found ack" || { echo "NOT FOUND"; depok=1; }; }
 echo -n "    g++ or clang                                                    " ; hash g++ 2>/dev/null && echo "OK. Found g++" || { hash clang++ 2>/dev/null && echo "OK. Found clang" || { echo "NOT FOUND"; depok=0; }; }
 echo -n "    cmake                                                           " ; hash cmake 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
 echo -n "    python                                                          " ; hash python 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
@@ -28,7 +28,8 @@ echo -n "    mono if you need c# completion support                          " ;
 echo -n "    golang if you need go completion support                        " ; hash go 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=1; }
 echo -n "    nodejs if you need javascript/typescript completion support     " ; hash node 2>/dev/null && echo "OK" || { hash nodejs 2>/dev/null && { n=$(which nodejs); echo "Found $n but not ${n%js}. Please make symlink"; depok=0; } || { echo "NOT FOUND"; depok=1; }; }
 echo -n "    npm if you need javascript/typescript completion support        " ; hash npm 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=1; }
-echo -n "    ag or ack if you want to search in files                        " ; hash ag 2>/dev/null && echo "OK. Found ag" || { hash ack 2>/dev/null && echo "OK. Found ack" || { echo "NOT FOUND"; depok=1; }; }
+echo -n "    rustc if you need rust completion support                       " ; hash rustc 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=1; }
+echo -n "    cargo if you need rust completion support                       " ; hash cargo 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=1; }
 
 echo
 case $depok in
@@ -36,7 +37,7 @@ case $depok in
 		echo "All dependencies are met. Good job!"
 		;;
 	1)
-		echo "Some special dependencies have been not found. If you need features that depend on them, please install them."
+		echo "Some special dependencies have been not found. If you need features that depend on them, please install these dependencies."
 		;;
 	0)
 		echo "Some dependencies have been not found. Please fix these problems."
@@ -89,6 +90,7 @@ if confirm "Do you want to compile YouCompleteMe plugin now?"; then
 	confirm "With C# support?"                 && installcmd+=" --omnisharp-completer"
 	confirm "With Go support?"                 && installcmd+=" --gocode-completer"
 	confirm "With JavaScript support?"         && installcmd+=" --tern-completer"
+	confirm "With Rust support?"               && installcmd+=" --racer-completer"
 
 	echo
 	echo "> Downloading YouCompleteMe..."
@@ -124,3 +126,4 @@ echo "After plugins' install vim may freeze for some time because of the helptag
 
 echo
 echo "~~~ Happy coding with vim! ~~~"
+
