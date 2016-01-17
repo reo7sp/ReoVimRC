@@ -177,8 +177,10 @@ noremap <leader>tf :NERDTreeFind<CR>
 noremap <leader>td :NERDTreeCWD<CR>
 noremap <leader>tc :NERDTreeClose<CR>
 
-" tag bar
+" tagbar
 noremap <leader>g :TagbarToggle<CR>
+let g:tagbar_autoshowtag = 1
+let g:tagbar_sort = 0
 
 " ctrlp
 let g:ctrlp_map = '<c-f>'
@@ -378,7 +380,6 @@ noremap <f4> :noh<cr>
 " Buffers
 nnoremap <leader>w <C-w>v<C-w>l
 noremap <f2> :w!<cr>
-noremap <f7> :enew<cr>
 noremap <f8> :bprevious<cr>
 noremap <f9> :bnext<cr>
 noremap <f12> :bp<cr>:bd #<cr>
