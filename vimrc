@@ -72,6 +72,7 @@ NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'idanarye/vim-vebugger'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'xolox/vim-easytags'
 
 " Appearance
 NeoBundle 'morhetz/gruvbox'
@@ -385,8 +386,6 @@ noremap <f12> :bp<cr>:bd #<cr>
 
 " Other
 nnoremap <leader>ss :setlocal spell!<cr>
-
-nnoremap <leader>rt :!ctags --fields=+l -R .<cr>
 
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :so $MYVIMRC<cr>
