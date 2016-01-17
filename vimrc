@@ -310,7 +310,6 @@ set ignorecase
 set smartcase
 
 set magic
-set gdefault
 
 set wildmenu
 set wildmode=longest:full,full
