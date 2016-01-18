@@ -62,12 +62,13 @@ NeoBundle 'honza/vim-snippets'
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'sjl/gundo.vim'
 
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'godlygeek/tabular'
 NeoBundle 'antoyo/vim-licenses'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'idanarye/vim-vebugger'
@@ -246,6 +247,9 @@ let g:startify_files_number = 5
 
 " vim-scala
 let g:scala_use_default_keymappings = 0
+
+" gundo
+nnoremap <leader>u :GundoToggle<CR>
 
 " }}}
 
