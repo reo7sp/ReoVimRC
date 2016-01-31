@@ -10,112 +10,116 @@
 
 if !1 | finish | endif
 
-if has('vim_starting')
-    set nocompatible
-    set runtimepath=~/.vim,$VIMRUNTIME
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-    filetype off
+set runtimepath=~/.vim,$VIMRUNTIME
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-let g:reovimrc_light = 0
+if !exists("g:reovimrc_light")
+    let g:reovimrc_light = 0
+endif
 
 if filereadable(expand("~/.vimrc.user.before"))
 	source ~/.vimrc.user.before
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+if $REOVIMRC_NO_LIGHT
+    let g:reovimrc_light = 0
+endif
+if $REOVIMRC_LIGHT
+    let g:reovimrc_light = 1
+endif
+
+call plug#begin(expand('~/.vim/bundle/'))
 
 " }}}
 
 " --- Plugins {{{
 
 " General
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 	'build': {
-\ 		'windows' : 'tools\\update-dll-mingw',
-\ 		'cygwin' : 'make -f make_cygwin.mak',
-\ 		'mac' : 'make -f make_mac.mak',
-\ 		'linux' : 'make',
-\ 		'unix' : 'gmake'
-\ 	}
-\ }
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'xolox/vim-misc'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'tpope/vim-repeat'
+Plug 'xolox/vim-misc'
 
 " Navigation
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'sgur/ctrlp-extensions.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-
-NeoBundle 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'sgur/ctrlp-extensions.vim'
 if !g:reovimrc_light
-	NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-	NeoBundle 'majutsushi/tagbar'
+    Plug 'tacahiroy/ctrlp-funky'
 endif
 
-NeoBundle 'Lokaltog/vim-easymotion'
-
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD'] }
 if !g:reovimrc_light
-	NeoBundle 'vim-scripts/restore_view.vim'
+	Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD'] }
+	Plug 'majutsushi/tagbar'
 endif
 
-NeoBundle 'rking/ag.vim'
+Plug 'Lokaltog/vim-easymotion'
+
 if !g:reovimrc_light
-	NeoBundle 'vim-scripts/a.vim'
-	NeoBundle 'xolox/vim-session'
+	Plug 'vim-scripts/restore_view.vim'
+endif
+
+Plug 'rking/ag.vim'
+if !g:reovimrc_light
+	Plug 'vim-scripts/a.vim', { 'for': ['cpp', 'c', 'h', 'hpp'] }
+	Plug 'xolox/vim-session'
 endif
 
 " Editing
 if g:reovimrc_light
-	NeoBundle 'ervandew/supertab'
+	Plug 'ervandew/supertab'
 else
-	NeoBundle 'Valloric/YouCompleteMe'
-	NeoBundle 'SirVer/ultisnips'
-	NeoBundle 'honza/vim-snippets'
+	Plug 'Valloric/YouCompleteMe'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
 endif
 
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'tpope/vim-sleuth'
-
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'tpope/vim-dispatch'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
 if !g:reovimrc_light
-	NeoBundle 'godlygeek/tabular'
-	NeoBundle 'antoyo/vim-licenses'
+    Plug 'ntpeters/vim-better-whitespace'
+endif
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+if !g:reovimrc_light
+	Plug 'tpope/vim-dispatch'
+	Plug 'godlygeek/tabular'
+	Plug 'antoyo/vim-licenses'
 endif
 
 " Appearance
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'luochen1990/rainbow'
-NeoBundle 'gregsexton/MatchTag'
+Plug 'morhetz/gruvbox'
+Plug 'luochen1990/rainbow'
+Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml', 'htm'] }
 
-NeoBundle 'bling/vim-airline'
+Plug 'bling/vim-airline'
 if !g:reovimrc_light
-	NeoBundle 'airblade/vim-gitgutter'
+	Plug 'airblade/vim-gitgutter'
 endif
 
-NeoBundle 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
 " File type specific
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'genoma/vim-less'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'vim-scripts/nginx.vim'
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'dag/vim-fish'
+Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
+Plug 'genoma/vim-less'
+Plug 'tpope/vim-markdown'
+Plug 'vim-scripts/nginx.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'dag/vim-fish'
 
 " Other
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'sjl/clam.vim'
-NeoBundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
+Plug 'sjl/clam.vim'
 if !g:reovimrc_light
-	NeoBundle 'scrooloose/syntastic'
+	Plug 'scrooloose/syntastic'
+	Plug 'tpope/vim-fugitive'
 endif
 
 " User
@@ -127,10 +131,8 @@ endif
 
 " --- Init end {{{
 
-call neobundle#end()
+call plug#end()
 
-filetype plugin indent on
-NeoBundleCheck
 let mapleader = ","
 
 " }}}
@@ -190,7 +192,6 @@ let g:airline_mode_map = {
 noremap <leader>tt :NERDTreeToggle<CR>
 noremap <leader>tf :NERDTreeFind<CR>
 noremap <leader>td :NERDTreeCWD<CR>
-noremap <leader>tc :NERDTreeClose<CR>
 
 " tag bar
 noremap <leader>g :TagbarToggle<CR>
