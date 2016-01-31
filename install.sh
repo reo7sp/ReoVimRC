@@ -66,6 +66,9 @@ fi
 echo
 echo "> Copying configs..."
 cp vimrc $INSTALL_DIR/.vimrc
+if [ ! -f $INSTALL_DIR/.vimrc.user.before ]; then
+	cp vimrc.user.before $INSTALL_DIR/.vimrc.user.before
+fi
 if [ ! -f $INSTALL_DIR/.vimrc.user.install ]; then
 	cp vimrc.user.install $INSTALL_DIR/.vimrc.user.install
 fi
@@ -80,6 +83,10 @@ if [ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]; then
 fi
 if [ ! -f $INSTALL_DIR/.ycm_extra_conf.py ]; then
 	cp ycm_extra_conf.py $INSTALL_DIR/.ycm_extra_conf.py
+fi
+
+if confirm "Use light version of config?"; then
+	{ echo; echo "let g:reovimrc_light = 0"; } >> $INSTALL_DIR/.vimrc.user.before
 fi
 
 

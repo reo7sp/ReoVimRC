@@ -17,6 +17,12 @@ if has('vim_starting')
     filetype off
 endif
 
+let g:reovimrc_light = 0
+
+if filereadable(expand("~/.vimrc.user.before"))
+	source ~/.vimrc.user.before
+endif
+
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " }}}
@@ -43,37 +49,45 @@ NeoBundle 'sgur/ctrlp-extensions.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'majutsushi/tagbar'
+if !g:reovimrc_light
+	NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+	NeoBundle 'majutsushi/tagbar'
+endif
 
 NeoBundle 'Lokaltog/vim-easymotion'
 
-NeoBundle 'vim-scripts/restore_view.vim'
-NeoBundle 'tmhedberg/matchit'
+if !g:reovimrc_light
+	NeoBundle 'vim-scripts/restore_view.vim'
+endif
 
-NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'xolox/vim-session'
+if !g:reovimrc_light
+	NeoBundle 'vim-scripts/a.vim'
+	NeoBundle 'xolox/vim-session'
+endif
 
 " Editing
-NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+if g:reovimrc_light
+	NeoBundle 'ervandew/supertab'
+else
+	NeoBundle 'Valloric/YouCompleteMe'
+	NeoBundle 'SirVer/ultisnips'
+	NeoBundle 'honza/vim-snippets'
+endif
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'godlygeek/tabular'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'sjl/gundo.vim'
 
-NeoBundle 'antoyo/vim-licenses'
+NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'idanarye/vim-vebugger'
 NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'xolox/vim-easytags'
+if !g:reovimrc_light
+	NeoBundle 'godlygeek/tabular'
+	NeoBundle 'antoyo/vim-licenses'
+endif
 
 " Appearance
 NeoBundle 'morhetz/gruvbox'
@@ -81,27 +95,28 @@ NeoBundle 'luochen1990/rainbow'
 NeoBundle 'gregsexton/MatchTag'
 
 NeoBundle 'bling/vim-airline'
-NeoBundle 'airblade/vim-gitgutter'
+if !g:reovimrc_light
+	NeoBundle 'airblade/vim-gitgutter'
+endif
 
 NeoBundle 'mhinz/vim-startify'
 
 " File type specific
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'genoma/vim-less'
-NeoBundle 'wavded/vim-stylus'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'dag/vim-fish'
 
 " Other
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'sjl/clam.vim'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'scrooloose/syntastic'
+if !g:reovimrc_light
+	NeoBundle 'scrooloose/syntastic'
+endif
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
@@ -128,7 +143,6 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 nnoremap <leader>yti :YcmCompleter GoToInclude<CR>
 nnoremap <leader>ytd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>ytf :YcmCompleter GoToDefinition<CR>
@@ -178,10 +192,8 @@ noremap <leader>tf :NERDTreeFind<CR>
 noremap <leader>td :NERDTreeCWD<CR>
 noremap <leader>tc :NERDTreeClose<CR>
 
-" tagbar
+" tag bar
 noremap <leader>g :TagbarToggle<CR>
-let g:tagbar_autoshowtag = 1
-let g:tagbar_sort = 0
 
 " ctrlp
 let g:ctrlp_map = '<c-f>'
@@ -245,11 +257,10 @@ let g:session_command_aliases = 1
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_files_number = 5
 
-" vim-scala
-let g:scala_use_default_keymappings = 0
-
-" gundo
-nnoremap <leader>u :GundoToggle<CR>
+" delimitmate
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+let delimitMate_matchpairs = "(:),[:],{:}"
 
 " }}}
 
@@ -316,6 +327,7 @@ set ignorecase
 set smartcase
 
 set magic
+set gdefault
 
 set wildmenu
 set wildmode=longest:full,full
@@ -384,12 +396,15 @@ noremap <f4> :noh<cr>
 " Buffers
 nnoremap <leader>w <C-w>v<C-w>l
 noremap <f2> :w!<cr>
+noremap <f7> :enew<cr>
 noremap <f8> :bprevious<cr>
 noremap <f9> :bnext<cr>
 noremap <f12> :bp<cr>:bd #<cr>
 
 " Other
 nnoremap <leader>ss :setlocal spell!<cr>
+
+nnoremap <leader>rt :!ctags --fields=+l -R .<cr>
 
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :so $MYVIMRC<cr>
