@@ -55,13 +55,8 @@ echo "> Creating folders..."
 mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell} -p
 
 echo
-echo "> Downloading neobundle..."
-git clone https://github.com/Shougo/neobundle.vim $INSTALL_DIR/.vim/bundle/neobundle.vim
-if [ $? != 0 ]; then
-	cd $INSTALL_DIR/.vim/bundle/neobundle.vim
-	git pull origin master
-	cd - > /dev/null
-fi
+echo "> Downloading plugin manager..."
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo
 echo "> Copying configs..."
