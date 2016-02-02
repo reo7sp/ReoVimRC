@@ -12,13 +12,8 @@ if !1 | finish | endif
 
 set runtimepath=~/.vim,$VIMRUNTIME
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 if !exists("g:reovimrc_light")
-    let g:reovimrc_light = 0
+	let g:reovimrc_light = 0
 endif
 
 if filereadable(expand("~/.vimrc.user.before"))
@@ -26,10 +21,10 @@ if filereadable(expand("~/.vimrc.user.before"))
 endif
 
 if $REOVIMRC_NO_LIGHT
-    let g:reovimrc_light = 0
+	let g:reovimrc_light = 0
 endif
 if $REOVIMRC_LIGHT
-    let g:reovimrc_light = 1
+	let g:reovimrc_light = 1
 endif
 
 call plug#begin(expand('~/.vim/bundle/'))
@@ -42,19 +37,16 @@ call plug#begin(expand('~/.vim/bundle/'))
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'tpope/vim-repeat'
 Plug 'xolox/vim-misc'
+Plug 'xolox/vim-shell'
 
 " Navigation
 Plug 'kien/ctrlp.vim'
 Plug 'sgur/ctrlp-extensions.vim'
 Plug 'tacahiroy/ctrlp-funky'
 
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD'] }
-Plug 'majutsushi/tagbar'
-
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'rking/ag.vim'
-Plug 'vim-scripts/a.vim', { 'for': ['cpp', 'c', 'h', 'hpp'] }
 Plug 'xolox/vim-session'
 
 " Editing
@@ -66,27 +58,19 @@ else
 	Plug 'honza/vim-snippets'
 endif
 
-Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-dispatch'
-Plug 'godlygeek/tabular'
-Plug 'antoyo/vim-licenses'
+Plug 'xolox/vim-easytags'
 
 " Appearance
 Plug 'morhetz/gruvbox'
 Plug 'luochen1990/rainbow'
-Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml', 'htm'] }
 
-Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
-
-Plug 'mhinz/vim-startify'
 
 " File type specific
 Plug 'kchmck/vim-coffee-script'
@@ -99,13 +83,12 @@ Plug 'dag/vim-fish'
 
 " Other
 Plug 'tpope/vim-unimpaired'
-Plug 'sjl/clam.vim'
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
-    source ~/.vimrc.user.install
+	source ~/.vimrc.user.install
 endif
 
 " }}}
@@ -149,41 +132,14 @@ let g:UltiSnipsExpandTrigger="<C-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
 
-" eclim
-let g:EclimCompletionMethod = 'omnifunc'
-
-" airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_mode_map = {
-\ 	'__' : '-',
-\ 	'n'  : 'N',
-\ 	'i'  : 'I',
-\ 	'R'  : 'R',
-\ 	'c'  : 'C',
-\ 	'v'  : 'V',
-\ 	'V'  : 'V',
-\ 	'' : 'V',
-\ 	's'  : 'S',
-\ 	'S'  : 'S',
-\ 	'' : 'S',
-\ }
-
-" nerd tree
-noremap <leader>tt :NERDTreeToggle<CR>
-noremap <leader>tf :NERDTreeFind<CR>
-noremap <leader>td :NERDTreeCWD<CR>
-
-" tag bar
-noremap <leader>g :TagbarToggle<CR>
-
 " ctrlp
-let g:ctrlp_map = '<c-f>'
 let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'menu']
-noremap <c-g> :CtrlPFunky<cr>
+let g:ctrlp_map = '<c-f>'
+noremap <c-t> :CtrlPFunky<cr>
 noremap <c-p> :CtrlPMenu<cr>
-if executable('git')
-    let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 " easy motion
@@ -203,16 +159,13 @@ let g:EasyMotion_use_smartsign_us = 1
 
 " multiple cursors
 let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_next_key='<C-l>'
-let g:multi_cursor_prev_key='<C-h>'
-let g:multi_cursor_skip_key='<C-j>'
+let g:multi_cursor_prev_key='<C-b>'
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_skip_key='<C-k>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " rainbow
 let g:rainbow_active = 1
-
-" syntastic
-let g:syntastic_cpp_compiler_options = ' -std=c++14 -Wall '
 
 " vim session
 let g:session_autoload = 'no'
@@ -221,14 +174,21 @@ let g:session_autosave_periodic = 5
 let g:session_autosave_silent = 1
 let g:session_command_aliases = 1
 
-" startify
-let g:startify_session_dir = '~/.vim/sessions'
-let g:startify_files_number = 5
-
 " delimitmate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
-let delimitMate_matchpairs = "(:),[:],{:}"
+
+" gitgutter
+nnoremap ]h <Plug>GitGutterNextHunk
+nnoremap [h <Plug>GitGutterPrevHunk
+
+" easytags
+let g:easytags_async = 1
+let g:easytags_suppress_ctags_warning = 1
+let g:easytags_suppress_report = 1
+
+" neomake
+autocmd! BufWritePost * Neomake
 
 " }}}
 
@@ -263,13 +223,12 @@ set list
 set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
 
 set mat=2
-set matchpairs+=<:>
 
 set shortmess+=aIcT
 set title
 set confirm
 set more
-set laststatus=2
+set laststatus=1
 set ruler
 set showmode
 set showcmd
@@ -364,7 +323,6 @@ noremap <f4> :noh<cr>
 " Buffers
 nnoremap <leader>w <C-w>v<C-w>l
 noremap <f2> :w!<cr>
-noremap <f7> :enew<cr>
 noremap <f8> :bprevious<cr>
 noremap <f9> :bnext<cr>
 noremap <f12> :bp<cr>:bd #<cr>
@@ -372,10 +330,8 @@ noremap <f12> :bp<cr>:bd #<cr>
 " Other
 nnoremap <leader>ss :setlocal spell!<cr>
 
-nnoremap <leader>rt :!ctags --fields=+l -R .<cr>
-
-nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>sv :so $MYVIMRC<cr>
+nnoremap <leader>ve :e $MYVIMRC<cr>
+nnoremap <leader>vs :so $MYVIMRC<cr>
 
 noremap <F1> <ESC>
 
