@@ -46,27 +46,16 @@ Plug 'xolox/vim-misc'
 " Navigation
 Plug 'kien/ctrlp.vim'
 Plug 'sgur/ctrlp-extensions.vim'
-if !g:reovimrc_light
-    Plug 'tacahiroy/ctrlp-funky'
-endif
+Plug 'tacahiroy/ctrlp-funky'
 
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD'] }
-if !g:reovimrc_light
-	Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD'] }
-	Plug 'majutsushi/tagbar'
-endif
+Plug 'majutsushi/tagbar'
 
 Plug 'Lokaltog/vim-easymotion'
 
-if !g:reovimrc_light
-	Plug 'vim-scripts/restore_view.vim'
-endif
-
 Plug 'rking/ag.vim'
-if !g:reovimrc_light
-	Plug 'vim-scripts/a.vim', { 'for': ['cpp', 'c', 'h', 'hpp'] }
-	Plug 'xolox/vim-session'
-endif
+Plug 'vim-scripts/a.vim', { 'for': ['cpp', 'c', 'h', 'hpp'] }
+Plug 'xolox/vim-session'
 
 " Editing
 if g:reovimrc_light
@@ -80,18 +69,14 @@ endif
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-if !g:reovimrc_light
-    Plug 'ntpeters/vim-better-whitespace'
-endif
+Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
-if !g:reovimrc_light
-	Plug 'tpope/vim-dispatch'
-	Plug 'godlygeek/tabular'
-	Plug 'antoyo/vim-licenses'
-endif
+Plug 'tpope/vim-dispatch'
+Plug 'godlygeek/tabular'
+Plug 'antoyo/vim-licenses'
 
 " Appearance
 Plug 'morhetz/gruvbox'
@@ -99,9 +84,7 @@ Plug 'luochen1990/rainbow'
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml', 'htm'] }
 
 Plug 'bling/vim-airline'
-if !g:reovimrc_light
-	Plug 'airblade/vim-gitgutter'
-endif
+Plug 'airblade/vim-gitgutter'
 
 Plug 'mhinz/vim-startify'
 
@@ -117,10 +100,8 @@ Plug 'dag/vim-fish'
 " Other
 Plug 'tpope/vim-unimpaired'
 Plug 'sjl/clam.vim'
-if !g:reovimrc_light
-	Plug 'scrooloose/syntastic'
-	Plug 'tpope/vim-fugitive'
-endif
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
@@ -231,21 +212,7 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:rainbow_active = 1
 
 " syntastic
-let g:syntastic_check_on_open=1
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -Wall '
-
-" tabularize
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-	let p = '^\s*|\s.*\s|\s*$'
-	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-		Tabularize/|/l1
-		normal! 0
-		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-	endif
-endfunction
 
 " vim session
 let g:session_autoload = 'no'
