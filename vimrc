@@ -40,9 +40,8 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-shell'
 
 " Navigation
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sgur/ctrlp-extensions.vim'
-Plug 'tacahiroy/ctrlp-funky'
 
 Plug 'Lokaltog/vim-easymotion'
 
@@ -133,9 +132,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
 
 " ctrlp
-let g:ctrlp_extensions = ['funky', 'yankring', 'undo', 'cmdline', 'quickfix', 'menu']
+let g:ctrlp_extensions = ['yankring', 'cmdline', 'quickfix', 'menu']
 let g:ctrlp_map = '<c-f>'
-noremap <c-t> :CtrlPFunky<cr>
+noremap <c-t> :CtrlPTag<cr>
 noremap <c-p> :CtrlPMenu<cr>
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
