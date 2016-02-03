@@ -134,7 +134,7 @@ if confirm "Do you want to compile YouCompleteMe plugin now? (it's long)"; then
 		echo -e $BWhite"> Successfully done!"$Color_Off
 	else
 		echo
-		echo -e $Red"The installation failed"$Color_Off
+		echo -e $BRed"The installation failed"$Color_Off
 		echo -e $Red"Fix errors and rerun this command: 'cd $INSTALL_DIR/.vim/bundle/YouCompleteMe; $installcmd'"$Color_Off
 	fi
 fi
