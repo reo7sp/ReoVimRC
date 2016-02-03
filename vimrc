@@ -207,7 +207,6 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = -28
 nnoremap <leader>f :Lexplore<CR>
-autocmd VimEnter * if !argc() | Explore | endif
 
 " airline
 let g:airline_powerline_fonts = 0
