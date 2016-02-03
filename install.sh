@@ -87,7 +87,7 @@ if [ ! -f $INSTALL_DIR/.vimrc.user.before ]; then
 	cp vimrc.user.before $INSTALL_DIR/.vimrc.user.before
 	echo
 	if confirm "Use light version of config by default?"; then
-		{ echo; echo "let g:reovimrc_light = 0"; } >> $INSTALL_DIR/.vimrc.user.before
+		{ echo; echo "let g:reovimrc_light = 1"; } >> $INSTALL_DIR/.vimrc.user.before
 	fi
 fi
 if [ ! -f $INSTALL_DIR/.vimrc.user.install ]; then
