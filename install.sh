@@ -85,6 +85,10 @@ echo -e $BWhite"> Copying configs..."$Color_Off
 cp vimrc $INSTALL_DIR/.vimrc
 if [ ! -f $INSTALL_DIR/.vimrc.user.before ]; then
 	cp vimrc.user.before $INSTALL_DIR/.vimrc.user.before
+	echo
+	if confirm "Use light version of config by default?"; then
+		{ echo; echo "let g:reovimrc_light = 0"; } >> $INSTALL_DIR/.vimrc.user.before
+	fi
 fi
 if [ ! -f $INSTALL_DIR/.vimrc.user.install ]; then
 	cp vimrc.user.install $INSTALL_DIR/.vimrc.user.install
@@ -102,10 +106,9 @@ if [ ! -f $INSTALL_DIR/.ycm_extra_conf.py ]; then
 	cp ycm_extra_conf.py $INSTALL_DIR/.ycm_extra_conf.py
 fi
 
+# youcompleteme setup
 echo
-if confirm "Use light version of config by default?"; then
-	{ echo; echo "let g:reovimrc_light = 0"; } >> $INSTALL_DIR/.vimrc.user.before
-elif confirm "Do you want to compile YouCompleteMe plugin now?"; then # youcompleteme setup
+if confirm "Do you want to compile YouCompleteMe plugin now? (it's long)"; then
 	installcmd="./install.py"
 	confirm "With C-family languages support?" && installcmd+=" --clang-completer"
 	confirm "With C# support?"                 && installcmd+=" --omnisharp-completer"
