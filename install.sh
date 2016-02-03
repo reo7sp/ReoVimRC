@@ -20,7 +20,7 @@ depok=2
 echo "Required dependencies:"
 echo -n "    git                                                             " ; hash git 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
 echo -n "    ag or ack if you want to search in files                        " ; hash ag 2>/dev/null && echo "OK. Found ag" || { hash ack 2>/dev/null && echo "OK. Found ack" || { echo "NOT FOUND"; depok=1; }; }
-echo -n "    exhuberant ctags if you want to use ctags                       " ; { ctags --version | grep -i exuberant; [ "$?" == 0 ]; } 2>/dev/null 1>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=1; }
+echo -n "    exuberant ctags if you want to use ctags                        " ; { ctags --version | grep -i exuberant; [ "$?" == 0 ]; } 2>/dev/null 1>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=1; }
 echo -n "    g++ or clang                                                    " ; hash g++ 2>/dev/null && echo "OK. Found g++" || { hash clang++ 2>/dev/null && echo "OK. Found clang" || { echo "NOT FOUND"; depok=0; }; }
 echo -n "    cmake                                                           " ; hash cmake 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
 echo -n "    python                                                          " ; hash python 2>/dev/null && echo "OK" || { echo "NOT FOUND"; depok=0; }
