@@ -80,14 +80,10 @@ if [ ! -f $INSTALL_DIR/.ycm_extra_conf.py ]; then
 	cp ycm_extra_conf.py $INSTALL_DIR/.ycm_extra_conf.py
 fi
 
-if confirm "Use light version of config?"; then
-	{ echo; echo "let g:reovimrc_light = 0"; } >> $INSTALL_DIR/.vimrc.user.before
-fi
-
-
-# youcompleteme setup
 echo
-if confirm "Do you want to compile YouCompleteMe plugin now?"; then
+if confirm "Use light version of config by default?"; then
+	{ echo; echo "let g:reovimrc_light = 0"; } >> $INSTALL_DIR/.vimrc.user.before
+elif confirm "Do you want to compile YouCompleteMe plugin now?"; then # youcompleteme setup
 	installcmd="./install.py"
 	confirm "With C-family languages support?" && installcmd+=" --clang-completer"
 	confirm "With C# support?"                 && installcmd+=" --omnisharp-completer"
@@ -118,15 +114,10 @@ if confirm "Do you want to compile YouCompleteMe plugin now?"; then
 	fi
 fi
 
+# install plugins
+vim -c ":PlugInstall | :qa!"
 
 # friendly farewell
-echo
-echo "Don't forget to edit ~/.vimrc.user.after."
-
-echo
-echo "To install all plugins launch vim."
-echo "After plugins' install vim may freeze for some time because of the helptags generation"
-
 echo
 echo "~~~ Happy coding with vim! ~~~"
 

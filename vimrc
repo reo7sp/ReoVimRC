@@ -47,6 +47,9 @@ Plug 'Lokaltog/vim-easymotion'
 
 Plug 'rking/ag.vim'
 Plug 'xolox/vim-session'
+if !g:reovimrc_light
+	Plug 'majutsushi/tagbar'
+endif
 
 " Editing
 if g:reovimrc_light
@@ -59,6 +62,10 @@ endif
 
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
+if !g:reovimrc_light
+	Plug 'ntpeters/vim-better-whitespace'
+	Plug 'godlygeek/tabular'
+endif
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
@@ -70,6 +77,9 @@ Plug 'morhetz/gruvbox'
 Plug 'luochen1990/rainbow'
 
 Plug 'airblade/vim-gitgutter'
+if !g:reovimrc_light
+	Plug 'bling/vim-airline'
+endif
 
 " File type specific
 Plug 'kchmck/vim-coffee-script'
@@ -136,6 +146,7 @@ let g:ctrlp_extensions = ['yankring', 'cmdline', 'quickfix', 'menu']
 let g:ctrlp_map = '<c-f>'
 noremap <c-t> :CtrlPTag<cr>
 noremap <c-p> :CtrlPMenu<cr>
+noremap <c-b> :CtrlPBuffer<cr>
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -158,7 +169,7 @@ let g:EasyMotion_use_smartsign_us = 1
 
 " multiple cursors
 let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_prev_key='<C-b>'
+let g:multi_cursor_prev_key='<C-,>'
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_skip_key='<C-k>'
 let g:multi_cursor_quit_key='<Esc>'
@@ -178,8 +189,9 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
 " gitgutter
-nnoremap ]h <Plug>GitGutterNextHunk
-nnoremap [h <Plug>GitGutterPrevHunk
+let g:gitgutter_map_keys = 0
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 " easytags
 let g:easytags_async = 1
@@ -188,6 +200,21 @@ let g:easytags_suppress_report = 1
 
 " neomake
 autocmd! BufWritePost * Neomake
+
+" netrw
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = -28
+nnoremap <leader>f :Lexplore<CR>
+autocmd VimEnter * if !argc() | Explore | endif
+
+" airline
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
+
+" tag bar
+nnoremap <leader>t :TagbarToggle<CR>
 
 " }}}
 
