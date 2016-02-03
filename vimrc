@@ -20,7 +20,7 @@ if filereadable(expand("~/.vimrc.user.before"))
 	source ~/.vimrc.user.before
 endif
 
-if $REOVIMRC_NO_LIGHT
+if $REOVIMRC_NOT_LIGHT
 	let g:reovimrc_light = 0
 endif
 if $REOVIMRC_LIGHT

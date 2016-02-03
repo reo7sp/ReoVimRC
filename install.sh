@@ -144,5 +144,11 @@ vim -c ":PlugInstall | :qa!"
 
 # friendly farewell
 echo
+echo -e $BWhite"Advice:"$Color_Off
+echo "You can set these aliases to launch either light or full-featured version of vim:"
+echo "alias lvim='env REOVIMRC_LIGHT=1 vim'"
+echo "alias hvim='env REOVIMRC_NOT_LIGHT=1 vim'"
+
+echo
 echo -e $Green"~~~ Happy coding with vim! ~~~"$Color_Off
 
