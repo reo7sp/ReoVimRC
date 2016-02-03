@@ -169,9 +169,9 @@ let g:EasyMotion_use_smartsign_us = 1
 
 " multiple cursors
 let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_prev_key='<C-,>'
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_prev_key='<C-t>'
+let g:multi_cursor_next_key='<C-y>'
+let g:multi_cursor_skip_key='<C-u>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " rainbow
