@@ -253,10 +253,14 @@ set shortmess+=aIcT
 set title
 set confirm
 set more
-set laststatus=1
 set ruler
 set showmode
 set showcmd
+if g:reovimrc_light
+	set laststatus=1
+else
+	set laststatus=2
+endif
 
 set foldenable
 set foldmethod=syntax
