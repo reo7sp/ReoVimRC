@@ -65,6 +65,7 @@ Plug 'Raimondi/delimitMate'
 if !g:reovimrc_light
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'godlygeek/tabular'
+	Plug 'scrooloose/syntastic'
 endif
 
 Plug 'scrooloose/nerdcommenter'
@@ -92,7 +93,6 @@ Plug 'dag/vim-fish'
 
 " Other
 Plug 'tpope/vim-unimpaired'
-Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 
 " User
