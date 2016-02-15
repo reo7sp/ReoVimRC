@@ -84,13 +84,10 @@ if !g:reovimrc_light
 endif
 
 " File type specific
-Plug 'kchmck/vim-coffee-script'
-Plug 'leafgarland/typescript-vim'
 Plug 'genoma/vim-less'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/nginx.vim'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'dag/vim-fish'
 
 " Other
 Plug 'tpope/vim-unimpaired'
