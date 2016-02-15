@@ -304,6 +304,9 @@ set completeopt=longest,menuone,preview
 set splitright
 set splitbelow
 
+set modeline
+set modelines=5
+
 set undofile
 set autoread
 set autowriteall
