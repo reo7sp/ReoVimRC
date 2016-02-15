@@ -66,6 +66,7 @@ if !g:reovimrc_light
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'godlygeek/tabular'
 	Plug 'scrooloose/syntastic'
+	Plug 'Chiel92/vim-autoformat'
 endif
 
 Plug 'scrooloose/nerdcommenter'
