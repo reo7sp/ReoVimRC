@@ -323,8 +323,6 @@ set shell=bash
 set history=700
 set ttyfast
 set hidden
-set exrc
-set secure
 
 " }}}
 
