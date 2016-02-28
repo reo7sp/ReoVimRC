@@ -73,6 +73,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 Plug 'xolox/vim-easytags'
+Plug 'editorconfig/editorconfig-vim'
 
 " Appearance
 Plug 'morhetz/gruvbox'
