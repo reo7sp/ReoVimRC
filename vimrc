@@ -85,6 +85,7 @@ if !g:reovimrc_light
 endif
 
 " File type specific
+Plug 'fatih/vim-go'
 Plug 'genoma/vim-less'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/nginx.vim'
