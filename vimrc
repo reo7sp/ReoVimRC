@@ -20,11 +20,8 @@ if filereadable(expand("~/.vimrc.user.before"))
 	source ~/.vimrc.user.before
 endif
 
-if $REOVIMRC_NOT_LIGHT
-	let g:reovimrc_light = 0
-endif
-if $REOVIMRC_LIGHT
-	let g:reovimrc_light = 1
+if !empty($REOVIMRC_LIGHT)
+	let g:reovimrc_light = $REOVIMRC_LIGHT
 endif
 
 call plug#begin(expand('~/.vim/bundle/'))
@@ -60,20 +57,22 @@ else
 	Plug 'honza/vim-snippets'
 endif
 
-Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
+Plug 'editorconfig/editorconfig-vim'
 if !g:reovimrc_light
 	Plug 'ntpeters/vim-better-whitespace'
-	Plug 'godlygeek/tabular'
 	Plug 'scrooloose/syntastic'
 	Plug 'Chiel92/vim-autoformat'
+	Plug 'xolox/vim-easytags'
 endif
 
+Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
-Plug 'xolox/vim-easytags'
-Plug 'editorconfig/editorconfig-vim'
+if !g:reovimrc_light
+	Plug 'godlygeek/tabular'
+endif
 
 " Appearance
 Plug 'morhetz/gruvbox'

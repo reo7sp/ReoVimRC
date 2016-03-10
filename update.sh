@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Reset color
 Color_Off='\033[0m'
@@ -21,10 +21,22 @@ BPurple='\033[1;35m'
 BCyan='\033[1;36m'
 BWhite='\033[1;37m'
 
-echo -e $BWhite"> Updating..."$Color_Off
-if git pull --rebase --stat origin master; then
+
+log() {
+	local text=$1
 	echo
-	./install.sh
-else
-  echo -e $BRed"There was an error updating. Try again later?"$Color_Off
-fi
+	echo -e "${BWhite}:: $text${Color_Off}"
+}
+
+
+main() {
+	log "Updating..."
+	if git pull --rebase --stat origin master; then
+		echo
+		./install.sh
+	else
+		echo -e "${BRed}There was an error while updating. Try again later${Color_Off}"
+	fi
+}
+
+main
