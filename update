@@ -33,7 +33,7 @@ main() {
 	log "Updating..."
 	if git pull --rebase --stat origin master; then
 		echo
-		./install.sh
+		./install
 	else
 		echo -e "${BRed}There was an error while updating. Try again later${Color_Off}"
 	fi

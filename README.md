@@ -6,12 +6,12 @@
 
     git clone --depth 1 https://github.com/reo7sp/ReoVimRC
     cd ReoVimRC
-    ./install.sh
+    ./install
 
 
 ## How to update
 
-    ./update.sh
+    ./update
 
 
 ## How to add custom settings
