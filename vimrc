@@ -85,6 +85,8 @@ endif
 
 " File type specific
 Plug 'fatih/vim-go'
+Plug 'derekwyatt/vim-scala'
+Plug 'elixir-lang/vim-elixir'
 Plug 'genoma/vim-less'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/nginx.vim'
