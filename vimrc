@@ -77,6 +77,7 @@ endif
 " Appearance
 Plug 'morhetz/gruvbox'
 Plug 'luochen1990/rainbow'
+Plug 'ciaranm/detectindent'
 
 Plug 'airblade/vim-gitgutter'
 if !g:reovimrc_light
@@ -221,6 +222,11 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_fail_silently = 1
 
+" DetectIndent
+autocmd BufReadPost * :DetectIndent
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 2
+
 " }}}
 
 " --- Vim preferences {{{
@@ -246,9 +252,10 @@ set showmatch
 set scrolloff=5
 set sidescrolloff=5
 
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
 
 set list
 set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
