@@ -255,6 +255,7 @@ w_install_ycm() {
 }
 
 w_install_plugins() {
+	log "Installing plugins..."
 	vim -c ":PlugInstall | :qa!"
 }
 
@@ -262,8 +263,8 @@ w_say_goodbye() {
 	echo
 	echo -e "${BWhite}Advice:${Color_Off}"
 	echo "You can set these aliases to launch either light or full-featured version of vim:"
-	echo "alias lvim='env REOVIMRC_LIGHT=1 vim'"
-	echo "alias hvim='env REOVIMRC_LIGHT=0 vim'"
+	echo "alias lvim=\"env REOVIMRC_LIGHT=1 vim\""
+	echo "alias hvim=\"env REOVIMRC_LIGHT=0 vim\""
 	echo
 	echo -e "${Green}~~~ Happy coding with vim! ~~~${Color_Off}"
 }
