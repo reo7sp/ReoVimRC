@@ -78,6 +78,7 @@ endif
 Plug 'morhetz/gruvbox'
 Plug 'luochen1990/rainbow'
 Plug 'ciaranm/detectindent'
+Plug 'tpope/vim-vinegar'
 
 Plug 'airblade/vim-gitgutter'
 if !g:reovimrc_light
@@ -201,11 +202,7 @@ let g:easytags_suppress_ctags_warning = 1
 let g:easytags_suppress_report = 1
 
 " netrw
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = -28
-nnoremap <leader>f :Lexplore<CR>
+nnoremap <leader>f :Explore<CR>
 
 " airline
 let g:airline_powerline_fonts = 0
