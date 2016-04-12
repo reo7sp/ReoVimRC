@@ -93,6 +93,7 @@ Plug 'genoma/vim-less'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/nginx.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'wavded/vim-stylus'
 
 " Other
 Plug 'tpope/vim-unimpaired'
