@@ -23,20 +23,20 @@ BWhite='\033[1;37m'
 
 
 log() {
-	local text=$1
-	echo
-	echo -e "${BWhite}:: $text${Color_Off}"
+  local text=$1
+  echo
+  echo -e "${BWhite}:: $text${Color_Off}"
 }
 
 
 main() {
-	log "Updating..."
-	if git pull --rebase --stat origin master; then
-		echo
-		./install
-	else
-		echo -e "${BRed}There was an error while updating. Try again later${Color_Off}"
-	fi
+  log "Updating..."
+  if git pull --rebase --stat origin master; then
+    echo
+    ./install
+  else
+    echo -e "${BRed}There was an error while updating. Try again later${Color_Off}"
+  fi
 }
 
 main

@@ -1,4 +1,4 @@
 style "vimfix" {
-	bg[NORMAL] = "#1d2021" # this matches gvim theme background color.
+  bg[NORMAL] = "#1d2021" # this matches gvim theme background color.
 }
 widget "vim-main-window.*GtkForm" style "vimfix"

@@ -13,15 +13,15 @@ if !1 | finish | endif
 set runtimepath=~/.vim,$VIMRUNTIME
 
 if !exists("g:reovimrc_light")
-	let g:reovimrc_light = 0
+  let g:reovimrc_light = 0
 endif
 
 if filereadable(expand("~/.vimrc.user.before"))
-	source ~/.vimrc.user.before
+  source ~/.vimrc.user.before
 endif
 
 if !empty($REOVIMRC_LIGHT)
-	let g:reovimrc_light = $REOVIMRC_LIGHT
+  let g:reovimrc_light = $REOVIMRC_LIGHT
 endif
 
 call plug#begin(expand('~/.vim/bundle/'))
@@ -45,25 +45,25 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
 Plug 'xolox/vim-session'
 if !g:reovimrc_light
-	Plug 'majutsushi/tagbar'
+  Plug 'majutsushi/tagbar'
 endif
 
 " Editing
 if g:reovimrc_light
-	Plug 'ervandew/supertab'
+  Plug 'ervandew/supertab'
 else
-	Plug 'Valloric/YouCompleteMe'
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 endif
 
 Plug 'Raimondi/delimitMate'
 Plug 'editorconfig/editorconfig-vim'
 if !g:reovimrc_light
-	Plug 'ntpeters/vim-better-whitespace'
-	Plug 'scrooloose/syntastic'
-	Plug 'Chiel92/vim-autoformat'
-	Plug 'xolox/vim-easytags'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'scrooloose/syntastic'
+  Plug 'Chiel92/vim-autoformat'
+  Plug 'xolox/vim-easytags'
 endif
 
 Plug 'tpope/vim-surround'
@@ -71,7 +71,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 if !g:reovimrc_light
-	Plug 'godlygeek/tabular'
+  Plug 'godlygeek/tabular'
 endif
 
 " Appearance
@@ -79,10 +79,11 @@ Plug 'morhetz/gruvbox'
 Plug 'luochen1990/rainbow'
 Plug 'ciaranm/detectindent'
 Plug 'tpope/vim-vinegar'
+Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'airblade/vim-gitgutter'
 if !g:reovimrc_light
-	Plug 'bling/vim-airline'
+  Plug 'bling/vim-airline'
 endif
 
 " File type specific
@@ -101,7 +102,7 @@ Plug 'tpope/vim-fugitive'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
-	source ~/.vimrc.user.install
+  source ~/.vimrc.user.install
 endif
 
 " }}}
@@ -152,8 +153,8 @@ noremap <c-t> :CtrlPTag<cr>
 noremap <c-p> :CtrlPMenu<cr>
 noremap <c-b> :CtrlPBuffer<cr>
 if executable('ag')
-	set grepprg=ag\ --nogroup\ --nocolor
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 " easy motion
@@ -225,6 +226,11 @@ autocmd BufReadPost * :DetectIndent
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 2
 
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
 " }}}
 
 " --- Vim preferences {{{
@@ -235,9 +241,9 @@ set t_vb=
 set tm=500
 set background=dark
 if !has("gui_running")
-	let g:gruvbox_italic=0
-	set t_Co=256
-	let g:rehash256=1
+  let g:gruvbox_italic=0
+  set t_Co=256
+  let g:rehash256=1
 endif
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
@@ -268,9 +274,9 @@ set ruler
 set showmode
 set showcmd
 if g:reovimrc_light
-	set laststatus=1
+  set laststatus=1
 else
-	set laststatus=2
+  set laststatus=2
 endif
 
 set foldenable
@@ -381,8 +387,8 @@ noremap <F1> <ESC>
 " --- Auto groups {{{
 
 augroup ftconf
-    au!
-    au FileType vim setlocal foldmethod=marker
+  au!
+  au FileType vim setlocal foldmethod=marker
 augroup END
 
 " }}}
@@ -411,7 +417,7 @@ set nospell
 " --- User vimrc {{{
 
 if filereadable(expand("~/.vimrc.user.after"))
-	source ~/.vimrc.user.after
+  source ~/.vimrc.user.after
 endif
 
 " }}}

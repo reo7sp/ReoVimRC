@@ -29,27 +29,27 @@ INSTALL_DIR=~
 # @param text Text to display in prompt
 # @return     True if user confirmed, otherwise false
 confirm() {
-	local message=$1
+  local message=$1
 
-	echo -n -e "${BWhite}$message${Color_Off} [Y/n] "
-	read response
-	case $response in
-		[yY][eE][sS]|[yY]|"")
-			true
-			;;
-		*)
-			false
-			;;
-	esac
+  echo -n -e "${BWhite}$message${Color_Off} [Y/n] "
+  read response
+  case $response in
+    [yY][eE][sS]|[yY]|"")
+      true
+      ;;
+    *)
+      false
+      ;;
+  esac
 }
 
 # Prints a message to user
 #
 # @param text Text to print
 log() {
-	local text=$1
-	echo
-	echo -e "${BWhite}:: $text${Color_Off}"
+  local text=$1
+  echo
+  echo -e "${BWhite}:: $text${Color_Off}"
 }
 
 # Checks if dependency is installed
@@ -57,228 +57,228 @@ log() {
 # @param name Name of the dependency to check
 # @return     A message about result
 check_dependency() {
-	local name=$1
-	case $name in
-		git)
-			if hash git 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BRed}NOT FOUND${Color_Off}"
-			fi
-			;;
-		g++)
-			if hash g++ 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}. Found g++"
-			elif hash clang++ 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}. Found clang"
-			else
-				echo -e "${BRed}NOT FOUND${Color_Off}"
-			fi
-			;;
-		cmake)
-			if hash cmake 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BRed}NOT FOUND${Color_Off}"
-			fi
-			;;
-		python)
-			if hash python 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BRed}NOT FOUND${Color_Off}"
-			fi
-			;;
-		python-dev)
-			if [[ $(find /usr/include /usr/local/include -name "Python.h") != "" ]]; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BRed}NOT FOUND${Color_Off}"
-			fi
-			;;
-		ag)
-			if hash ag 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}. Found ag"
-			elif hash ack 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}. Found ack"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		ctags)
-			if { ctags --version | grep -i exuberant; [ "$?" == 0 ]; } &>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		mono)
-			if hash mono 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		go)
-			if hash go 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		node)
-			if hash node 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			elif hash nodejs 2>/dev/null; then
-				local n=$(which nodejs)
-				echo "${BRed}Found $n but not ${n%js}${Color_Off}. Please make symlink"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		npm)
-			if hash npm 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		rustc)
-			if hash rustc 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-		cargo)
-			if hash cargo 2>/dev/null; then
-				echo -e "${BGreen}OK${Color_Off}"
-			else
-				echo -e "${BYellow}NOT FOUND${Color_Off}"
-			fi
-			;;
-	esac
+  local name=$1
+  case $name in
+    git)
+      if hash git 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BRed}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    g++)
+      if hash g++ 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}. Found g++"
+      elif hash clang++ 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}. Found clang"
+      else
+        echo -e "${BRed}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    cmake)
+      if hash cmake 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BRed}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    python)
+      if hash python 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BRed}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    python-dev)
+      if [[ $(find /usr/include /usr/local/include -name "Python.h") != "" ]]; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BRed}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    ag)
+      if hash ag 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}. Found ag"
+      elif hash ack 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}. Found ack"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    ctags)
+      if { ctags --version | grep -i exuberant; [ "$?" == 0 ]; } &>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    mono)
+      if hash mono 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    go)
+      if hash go 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    node)
+      if hash node 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      elif hash nodejs 2>/dev/null; then
+        local n=$(which nodejs)
+        echo "${BRed}Found $n but not ${n%js}${Color_Off}. Please make symlink"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    npm)
+      if hash npm 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    rustc)
+      if hash rustc 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+    cargo)
+      if hash cargo 2>/dev/null; then
+        echo -e "${BGreen}OK${Color_Off}"
+      else
+        echo -e "${BYellow}NOT FOUND${Color_Off}"
+      fi
+      ;;
+  esac
 }
 
 
 w_show_dependencies() {
-	echo -e "${BWhite}Required dependencies:${Color_Off}"
-	echo -n -e "    ${BCyan}git${Color_Off}                                                             " ; check_dependency git
-	echo -n -e "    ${BCyan}g++${Color_Off} or ${BCyan}clang${Color_Off}                                                    " ; check_dependency g++
-	echo -n -e "    ${BCyan}cmake${Color_Off}                                                           " ; check_dependency cmake
-	echo -n -e "    ${BCyan}python${Color_Off}                                                          " ; check_dependency python
-	echo -n -e "    ${BCyan}python-dev${Color_Off}                                                      " ; check_dependency python-dev
-	echo -n -e "    ${BCyan}ag${Color_Off} or ${BCyan}ack${Color_Off} if you want to search in files                        " ; check_dependency ag
-	echo -n -e "    ${BCyan}exuberant-ctags${Color_Off} if you want to use ctags                        " ; check_dependency ctags
-	echo -n -e "    ${BCyan}mono${Color_Off} if you need c# completion support                          " ; check_dependency mono
-	echo -n -e "    ${BCyan}golang${Color_Off} if you need go completion support                        " ; check_dependency go
-	echo -n -e "    ${BCyan}nodejs${Color_Off} if you need javascript/typescript completion support     " ; check_dependency node
-	echo -n -e "    ${BCyan}npm${Color_Off} if you need javascript/typescript completion support        " ; check_dependency npm
-	echo -n -e "    ${BCyan}rustc${Color_Off} if you need rust completion support                       " ; check_dependency rustc
-	echo -n -e "    ${BCyan}cargo${Color_Off} if you need rust completion support                       " ; check_dependency cargo
+  echo -e "${BWhite}Required dependencies:${Color_Off}"
+  echo -n -e "    ${BCyan}git${Color_Off}                                                             " ; check_dependency git
+  echo -n -e "    ${BCyan}g++${Color_Off} or ${BCyan}clang${Color_Off}                                                    " ; check_dependency g++
+  echo -n -e "    ${BCyan}cmake${Color_Off}                                                           " ; check_dependency cmake
+  echo -n -e "    ${BCyan}python${Color_Off}                                                          " ; check_dependency python
+  echo -n -e "    ${BCyan}python-dev${Color_Off}                                                      " ; check_dependency python-dev
+  echo -n -e "    ${BCyan}ag${Color_Off} or ${BCyan}ack${Color_Off} if you want to search in files                        " ; check_dependency ag
+  echo -n -e "    ${BCyan}exuberant-ctags${Color_Off} if you want to use ctags                        " ; check_dependency ctags
+  echo -n -e "    ${BCyan}mono${Color_Off} if you need c# completion support                          " ; check_dependency mono
+  echo -n -e "    ${BCyan}golang${Color_Off} if you need go completion support                        " ; check_dependency go
+  echo -n -e "    ${BCyan}nodejs${Color_Off} if you need javascript/typescript completion support     " ; check_dependency node
+  echo -n -e "    ${BCyan}npm${Color_Off} if you need javascript/typescript completion support        " ; check_dependency npm
+  echo -n -e "    ${BCyan}rustc${Color_Off} if you need rust completion support                       " ; check_dependency rustc
+  echo -n -e "    ${BCyan}cargo${Color_Off} if you need rust completion support                       " ; check_dependency cargo
 }
 
 w_ask_to_continue() {
-	echo
-	confirm "Do you want to continue ReoVimRC install?"
+  echo
+  confirm "Do you want to continue ReoVimRC install?"
 }
 
 w_prepare() {
-	log "Creating folders..."
-	mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell} -p
+  log "Creating folders..."
+  mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell} -p
 }
 
 w_download_plugin_manager() {
-	log "Downloading plugin manager..."
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  log "Downloading plugin manager..."
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 w_copy_configs() {
-	log "Copying configs..."
-	cp vimrc $INSTALL_DIR/.vimrc
-	if [[ ! -f $INSTALL_DIR/.vimrc.user.before ]]; then
-		cp vimrc.user.before $INSTALL_DIR/.vimrc.user.before
-		echo
-		if confirm "Use light version of config by default?"; then
-			{ echo; echo "let g:reovimrc_light = 1"; } >> $INSTALL_DIR/.vimrc.user.before
-		fi
-	fi
-	if [[ ! -f $INSTALL_DIR/.vimrc.user.install ]]; then
-		cp vimrc.user.install $INSTALL_DIR/.vimrc.user.install
-	fi
-	if [[ ! -f $INSTALL_DIR/.vimrc.user.after ]]; then
-		cp vimrc.user.after $INSTALL_DIR/.vimrc.user.after
-	fi
-	if [[ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]]; then
-		cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0.mine
-	fi
-	if [[ ! -f $INSTALL_DIR/.gtkrc-2.0 ]]; then
-		cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0
-	fi
-	if [[ ! -f $INSTALL_DIR/.ycm_extra_conf.py ]]; then
-		cp ycm_extra_conf.py $INSTALL_DIR/.ycm_extra_conf.py
-	fi
+  log "Copying configs..."
+  cp vimrc $INSTALL_DIR/.vimrc
+  if [[ ! -f $INSTALL_DIR/.vimrc.user.before ]]; then
+    cp vimrc.user.before $INSTALL_DIR/.vimrc.user.before
+    echo
+    if confirm "Use light version of config by default?"; then
+      { echo; echo "let g:reovimrc_light = 1"; } >> $INSTALL_DIR/.vimrc.user.before
+    fi
+  fi
+  if [[ ! -f $INSTALL_DIR/.vimrc.user.install ]]; then
+    cp vimrc.user.install $INSTALL_DIR/.vimrc.user.install
+  fi
+  if [[ ! -f $INSTALL_DIR/.vimrc.user.after ]]; then
+    cp vimrc.user.after $INSTALL_DIR/.vimrc.user.after
+  fi
+  if [[ ! -f $INSTALL_DIR/.gtkrc-2.0.mine ]]; then
+    cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0.mine
+  fi
+  if [[ ! -f $INSTALL_DIR/.gtkrc-2.0 ]]; then
+    cp gtkrc-2.0.mine $INSTALL_DIR/.gtkrc-2.0
+  fi
+  if [[ ! -f $INSTALL_DIR/.ycm_extra_conf.py ]]; then
+    cp ycm_extra_conf.py $INSTALL_DIR/.ycm_extra_conf.py
+  fi
 }
 
 w_ask_to_install_ycm() {
-	echo
-	confirm "Do you want to compile YouCompleteMe plugin now? (it's long)"
+  echo
+  confirm "Do you want to compile YouCompleteMe plugin now? (it's long)"
 }
 
 w_install_ycm() {
-	installcmd="./install.py"
-	confirm "With C-family languages support?" && installcmd+=" --clang-completer"
-	confirm "With C# support?"                 && installcmd+=" --omnisharp-completer"
-	confirm "With Go support?"                 && installcmd+=" --gocode-completer"
-	confirm "With JavaScript support?"         && installcmd+=" --tern-completer"
-	confirm "With Rust support?"               && installcmd+=" --racer-completer"
+  installcmd="./install.py"
+  confirm "With C-family languages support?" && installcmd+=" --clang-completer"
+  confirm "With C# support?"                 && installcmd+=" --omnisharp-completer"
+  confirm "With Go support?"                 && installcmd+=" --gocode-completer"
+  confirm "With JavaScript support?"         && installcmd+=" --tern-completer"
+  confirm "With Rust support?"               && installcmd+=" --racer-completer"
 
-	log "Downloading YouCompleteMe..."
-	git clone https://github.com/Valloric/YouCompleteMe $INSTALL_DIR/.vim/bundle/YouCompleteMe
-	if [[ $? != 0 ]]; then
-		cd $INSTALL_DIR/.vim/bundle/YouCompleteMe
-		git pull origin master
-	else
-		cd $INSTALL_DIR/.vim/bundle/YouCompleteMe
-	fi
-	git submodule update --init --recursive
+  log "Downloading YouCompleteMe..."
+  git clone https://github.com/Valloric/YouCompleteMe $INSTALL_DIR/.vim/bundle/YouCompleteMe
+  if [[ $? != 0 ]]; then
+    cd $INSTALL_DIR/.vim/bundle/YouCompleteMe
+    git pull origin master
+  else
+    cd $INSTALL_DIR/.vim/bundle/YouCompleteMe
+  fi
+  git submodule update --init --recursive
 
-	log "Starting the build..."
-	if eval $installcmd; then
-		echo
-		echo -e "${Green}Successfully done!${Color_Off}"
-	else
-		echo
-		echo -e "${BRed}The installation failed${Color_Off}"
-		echo -e "${Red}Fix errors and rerun this command:${Color_Off} 'cd $INSTALL_DIR/.vim/bundle/YouCompleteMe; $installcmd'"
-	fi
+  log "Starting the build..."
+  if eval $installcmd; then
+    echo
+    echo -e "${Green}Successfully done!${Color_Off}"
+  else
+    echo
+    echo -e "${BRed}The installation failed${Color_Off}"
+    echo -e "${Red}Fix errors and rerun this command:${Color_Off} 'cd $INSTALL_DIR/.vim/bundle/YouCompleteMe; $installcmd'"
+  fi
 }
 
 w_install_plugins() {
-	log "Installing plugins..."
-	vim -c ":PlugInstall | :qa!"
+  log "Installing plugins..."
+  vim -c ":PlugInstall | :qa!"
 }
 
 w_say_goodbye() {
-	echo
-	echo -e "${BWhite}Advice:${Color_Off}"
-	echo "You can set these aliases to launch either light or full-featured version of vim:"
-	echo "alias lvim=\"env REOVIMRC_LIGHT=1 vim\""
-	echo "alias hvim=\"env REOVIMRC_LIGHT=0 vim\""
-	echo
-	echo -e "${Green}~~~ Happy coding with vim! ~~~${Color_Off}"
+  echo
+  echo -e "${BWhite}Advice:${Color_Off}"
+  echo "You can set these aliases to launch either light or full-featured version of vim:"
+  echo "alias lvim=\"env REOVIMRC_LIGHT=1 vim\""
+  echo "alias hvim=\"env REOVIMRC_LIGHT=0 vim\""
+  echo
+  echo -e "${Green}~~~ Happy coding with vim! ~~~${Color_Off}"
 }
 
 
 main() {
-	w_show_dependencies
-	w_ask_to_continue || exit
-	w_prepare
-	w_download_plugin_manager
-	w_copy_configs
-	w_ask_to_install_ycm && w_install_ycm
-	w_install_plugins
-	w_say_goodbye
+  w_show_dependencies
+  w_ask_to_continue || exit
+  w_prepare
+  w_download_plugin_manager
+  w_copy_configs
+  w_ask_to_install_ycm && w_install_ycm
+  w_install_plugins
+  w_say_goodbye
 }
 
 main
