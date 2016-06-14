@@ -378,11 +378,11 @@ nnoremap <cr> :noh<cr><cr>
 " Buffers
 nnoremap <leader>h <C-w>s<C-w>l
 nnoremap <leader>v <C-w>v<C-w>l
-nnoremap <c-left> :bprevious<cr>
-nnoremap <c-right> :bnext<cr>
+nnoremap <c-[> :bprevious<cr>
+nnoremap <c-]> :bnext<cr>
 nnoremap <c-q> :bp<cr>:bd #<cr>
 nnoremap <c-n> :enew<cr>
-nnoremap <c-y> :e#<cr>
+nnoremap <c-y> :e #<cr>
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <c-o>:w<cr><cr>
 vnoremap <c-s> <esc>:w<cr>gv
