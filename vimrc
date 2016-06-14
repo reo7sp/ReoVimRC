@@ -37,14 +37,13 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-shell'
 
 " Navigation
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sgur/ctrlp-extensions.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite-outline'
 
 Plug 'Lokaltog/vim-easymotion'
 
-Plug 'rking/ag.vim'
-Plug 'xolox/vim-session'
 if !g:reovimrc_light
+  Plug 'xolox/vim-session'
   Plug 'majutsushi/tagbar'
 endif
 
@@ -90,10 +89,10 @@ endif
 Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
-Plug 'genoma/vim-less'
-Plug 'tpope/vim-markdown'
-Plug 'vim-scripts/nginx.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-scripts/nginx.vim'
+Plug 'tpope/vim-markdown'
+Plug 'genoma/vim-less'
 Plug 'wavded/vim-stylus'
 
 " Other
@@ -123,60 +122,59 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>yti :YcmCompleter GoToInclude<CR>
-nnoremap <leader>ytd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>ytf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>ytt :YcmCompleter GoTo<CR>
-nnoremap <leader>ytc :YcmCompleter GoToImprecise<CR>
-nnoremap <leader>ytr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>ytl :YcmCompleter GoToImplementation<CR>
-nnoremap <leader>yte :YcmCompleter GoToImplementationElseDeclaration<CR>
-nnoremap <leader>ygt :YcmCompleter GetType<CR>
-nnoremap <leader>ygp :YcmCompleter GetParent<CR>
-nnoremap <leader>ygd :YcmCompleter GetDoc<CR>
+nnoremap <leader>ygn :YcmCompleter GoToInclude<CR>
+nnoremap <leader>ygd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>ygf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>ygt :YcmCompleter GoTo<CR>
+nnoremap <leader>ygc :YcmCompleter GoToImprecise<CR>
+nnoremap <leader>ygr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>ygi :YcmCompleter GoToImplementation<CR>
+nnoremap <leader>ygg :YcmCompleter GoToImplementationElseDeclaration<CR>
+nnoremap <leader>yat :YcmCompleter GetType<CR>
+nnoremap <leader>yap :YcmCompleter GetParent<CR>
+nnoremap <leader>yad :YcmCompleter GetDoc<CR>
 nnoremap <leader>yf :YcmCompleter FixIt<CR>
-nnoremap <leader>yss :YcmCompleter StartServer<CR>
-nnoremap <leader>yst :YcmCompleter StopServer<CR>
-nnoremap <leader>ysr :YcmCompleter RestartServer<CR>
 nnoremap <leader>yrs :YcmCompleter ReloadSolution<CR>
-nnoremap <leader>ysc :YcmCompleter ClearCompilationFlagCache<CR>
 
 " ulti snips
-let g:UltiSnipsExpandTrigger="<C-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<c-s-e>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s-j>"
 
-" ctrlp
-let g:ctrlp_extensions = ['yankring', 'cmdline', 'quickfix', 'menu']
-let g:ctrlp_map = '<c-f>'
-noremap <c-t> :CtrlPTag<cr>
-noremap <c-p> :CtrlPMenu<cr>
-noremap <c-b> :CtrlPBuffer<cr>
+" unite
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+elseif executable('ack')
+  let g:unite_source_rec_async_command = ['ack', '-f', '--nofilter']
 endif
+nnoremap <c-p> :Unite -start-insert file_rec/async<cr>
+nnoremap <c-t> :Unite -start-insert outline<cr>
+nnoremap <c-b> :Unite -quick-match buffer window<cr>
+nnoremap <c-\> :Unite -start-insert mapping command<cr>
+nnoremap <leader>\ :Unite -start-insert<cr>
 
 " easy motion
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-map S <Plug>(easymotion-s)
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+nmap <space> <Plug>(easymotion-s)
+noremap <Leader>l <Plug>(easymotion-lineforward)
+noremap <Leader>j <Plug>(easymotion-j)
+noremap <Leader>k <Plug>(easymotion-k)
+noremap <Leader>h <Plug>(easymotion-linebackward)
 
 " multiple cursors
 let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_prev_key='<C-t>'
-let g:multi_cursor_next_key='<C-y>'
-let g:multi_cursor_skip_key='<C-u>'
+noremap <c-d> <nop>
+noremap <c-u> <nop>
+let g:multi_cursor_prev_key='<C-u>'
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_skip_key='<C-k>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " rainbow
@@ -209,6 +207,17 @@ nnoremap <leader>f :Explore<CR>
 " airline
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_mode_map = {
+  \   '__' : '-',
+  \   'n'  : 'N',
+  \   'i'  : 'I',
+  \   'R'  : 'R',
+  \   'c'  : 'C',
+  \   'v'  : 'V',
+  \   'V'  : 'V',
+  \   's'  : 'S',
+  \   'S'  : 'S',
+  \ }
 
 " tag bar
 nnoremap <leader>t :TagbarToggle<CR>
@@ -358,21 +367,25 @@ nnoremap k gk
 " Editing
 noremap <S-Insert> <C-r>+
 noremap! <S-Insert> <C-r>+
-set pastetoggle=<f3>
+set pastetoggle=<c-e>
 
 vnoremap < <gv
 vnoremap > >gv
 
 inoremap jk <ESC>
 nnoremap <cr> :noh<cr><cr>
-noremap <f4> :noh<cr>
 
 " Buffers
-nnoremap <leader>w <C-w>v<C-w>l
-noremap <f2> :w!<cr>
-noremap <f8> :bprevious<cr>
-noremap <f9> :bnext<cr>
-noremap <f12> :bp<cr>:bd #<cr>
+nnoremap <leader>h <C-w>s<C-w>l
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <c-left> :bprevious<cr>
+nnoremap <c-right> :bnext<cr>
+nnoremap <c-q> :bp<cr>:bd #<cr>
+nnoremap <c-n> :enew<cr>
+nnoremap <c-y> :e#<cr>
+nnoremap <c-s> :w<cr>
+inoremap <c-s> <c-o>:w<cr><cr>
+vnoremap <c-s> <esc>:w<cr>gv
 
 " Other
 nnoremap <leader>ss :setlocal spell!<cr>

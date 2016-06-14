@@ -96,15 +96,6 @@ check_dependency() {
         echo -e "${BRed}NOT FOUND${Color_Off}"
       fi
       ;;
-    ag)
-      if hash ag 2>/dev/null; then
-        echo -e "${BGreen}OK${Color_Off}. Found ag"
-      elif hash ack 2>/dev/null; then
-        echo -e "${BGreen}OK${Color_Off}. Found ack"
-      else
-        echo -e "${BYellow}NOT FOUND${Color_Off}"
-      fi
-      ;;
     ctags)
       if { ctags --version | grep -i exuberant; [ "$?" == 0 ]; } &>/dev/null; then
         echo -e "${BGreen}OK${Color_Off}"
@@ -185,7 +176,7 @@ w_ask_to_continue() {
 
 w_prepare() {
   log "Creating folders..."
-  mkdir $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell} -p
+  mkdir -p $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell}
 }
 
 w_download_plugin_manager() {
@@ -256,7 +247,7 @@ w_install_ycm() {
 
 w_install_plugins() {
   log "Installing plugins..."
-  vim -c ":PlugInstall | :qa!"
+  vim -c ":PlugUpdate | :qa!"
 }
 
 w_say_goodbye() {
