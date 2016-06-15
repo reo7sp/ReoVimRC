@@ -154,19 +154,18 @@ check_dependency() {
 
 w_show_dependencies() {
   echo -e "${BWhite}Required dependencies:${Color_Off}"
-  echo -n -e "    ${BCyan}git${Color_Off}                                                             " ; check_dependency git
-  echo -n -e "    ${BCyan}g++${Color_Off} or ${BCyan}clang${Color_Off}                                                    " ; check_dependency g++
-  echo -n -e "    ${BCyan}cmake${Color_Off}                                                           " ; check_dependency cmake
-  echo -n -e "    ${BCyan}python${Color_Off}                                                          " ; check_dependency python
-  echo -n -e "    ${BCyan}python-dev${Color_Off}                                                      " ; check_dependency python-dev
-  echo -n -e "    ${BCyan}ag${Color_Off} or ${BCyan}ack${Color_Off} if you want to search in files                        " ; check_dependency ag
-  echo -n -e "    ${BCyan}exuberant-ctags${Color_Off} if you want to use ctags                        " ; check_dependency ctags
-  echo -n -e "    ${BCyan}mono${Color_Off} if you need c# completion support                          " ; check_dependency mono
-  echo -n -e "    ${BCyan}golang${Color_Off} if you need go completion support                        " ; check_dependency go
-  echo -n -e "    ${BCyan}nodejs${Color_Off} if you need javascript/typescript completion support     " ; check_dependency node
-  echo -n -e "    ${BCyan}npm${Color_Off} if you need javascript/typescript completion support        " ; check_dependency npm
-  echo -n -e "    ${BCyan}rustc${Color_Off} if you need rust completion support                       " ; check_dependency rustc
-  echo -n -e "    ${BCyan}cargo${Color_Off} if you need rust completion support                       " ; check_dependency cargo
+  echo -n -e "    ${BCyan}git${Color_Off}                                                          " ; check_dependency git
+  echo -n -e "    ${BCyan}g++${Color_Off} or ${BCyan}clang${Color_Off}                                                 " ; check_dependency g++
+  echo -n -e "    ${BCyan}cmake${Color_Off}                                                        " ; check_dependency cmake
+  echo -n -e "    ${BCyan}python${Color_Off}                                                       " ; check_dependency python
+  echo -n -e "    ${BCyan}python-dev${Color_Off}                                                   " ; check_dependency python-dev
+  echo -n -e "    ${BCyan}exuberant-ctags${Color_Off} if you want to use ctags                     " ; check_dependency ctags
+  echo -n -e "    ${BCyan}mono${Color_Off} if you need c# completion support                       " ; check_dependency mono
+  echo -n -e "    ${BCyan}golang${Color_Off} if you need go completion support                     " ; check_dependency go
+  echo -n -e "    ${BCyan}nodejs${Color_Off} if you need javascript/typescript completion support  " ; check_dependency node
+  echo -n -e "    ${BCyan}npm${Color_Off} if you need javascript/typescript completion support     " ; check_dependency npm
+  echo -n -e "    ${BCyan}rustc${Color_Off} if you need rust completion support                    " ; check_dependency rustc
+  echo -n -e "    ${BCyan}cargo${Color_Off} if you need rust completion support                    " ; check_dependency cargo
 }
 
 w_ask_to_continue() {
@@ -247,7 +246,8 @@ w_install_ycm() {
 
 w_install_plugins() {
   log "Installing plugins..."
-  vim -c ":PlugUpdate | :qa!"
+  env REOVIMRC_LIGHT=0 vim -c ":PlugUpdate | :qa!"
+  env REOVIMRC_LIGHT=1 vim -c ":PlugUpdate | :qa!"
 }
 
 w_say_goodbye() {

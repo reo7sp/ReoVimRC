@@ -149,7 +149,7 @@ elseif executable('ack')
 endif
 nnoremap <c-p> :Unite -start-insert file_rec/async<cr>
 nnoremap <c-t> :Unite -start-insert outline<cr>
-nnoremap <c-b> :Unite -quick-match buffer window<cr>
+nnoremap <c-u> :Unite -quick-match buffer window<cr>
 nnoremap <c-\> :Unite -start-insert mapping command<cr>
 nnoremap <leader>\ :Unite -start-insert<cr>
 
@@ -201,12 +201,11 @@ let g:easytags_async = 1
 let g:easytags_suppress_ctags_warning = 1
 let g:easytags_suppress_report = 1
 
-" netrw
-nnoremap <leader>f :Explore<CR>
-
 " airline
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 let g:airline_mode_map = {
   \   '__' : '-',
   \   'n'  : 'N',
@@ -376,15 +375,13 @@ inoremap jk <ESC>
 nnoremap <cr> :noh<cr><cr>
 
 " Buffers
-nnoremap <leader>h <C-w>s<C-w>l
-nnoremap <leader>v <C-w>v<C-w>l
-nnoremap <c-[> :bprevious<cr>
-nnoremap <c-]> :bnext<cr>
+nnoremap <c-k> :bprevious<cr>
+nnoremap <c-l> :bnext<cr>
 nnoremap <c-q> :bp<cr>:bd #<cr>
 nnoremap <c-n> :enew<cr>
 nnoremap <c-y> :e #<cr>
 nnoremap <c-s> :w<cr>
-inoremap <c-s> <c-o>:w<cr><cr>
+inoremap <c-s> <c-o>:w<cr>
 vnoremap <c-s> <esc>:w<cr>gv
 
 " Other
