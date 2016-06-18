@@ -1,11 +1,3 @@
-
-""""""""""""""""""""""""""""""""""""""""""""""
-"                                            "
-" Author: Reo_SP (http://reo7sp.ru)          "
-" Github: https://github.com/reo7sp/ReoVimRC "
-"                                            "
-""""""""""""""""""""""""""""""""""""""""""""""
-
 " --- Init start {{{
 
 if !1 | finish | endif
