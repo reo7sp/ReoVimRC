@@ -5,7 +5,7 @@ if !1 | finish | endif
 set runtimepath=~/.vim,$VIMRUNTIME
 
 if !exists("g:reovimrc_light")
-  let g:reovimrc_light = 0
+  let g:reovimrc_light = 1
 endif
 
 if filereadable(expand("~/.vimrc.user.before"))
