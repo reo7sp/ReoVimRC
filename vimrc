@@ -36,6 +36,8 @@ Plug 'Lokaltog/vim-easymotion'
 
 if !g:reovimrc_light
   Plug 'xolox/vim-session'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'majutsushi/tagbar'
 endif
 
@@ -166,7 +168,7 @@ noremap <c-d> <nop>
 noremap <c-u> <nop>
 let g:multi_cursor_prev_key='<C-u>'
 let g:multi_cursor_next_key='<C-d>'
-let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_skip_key='<C-j>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " rainbow
@@ -210,7 +212,10 @@ let g:airline_mode_map = {
   \   'S'  : 'S',
   \ }
 
-" tag bar
+" nerdtree
+nnoremap <leader>p :NERDTreeToggle<CR>
+
+" tagbar
 nnoremap <leader>t :TagbarToggle<CR>
 
 " vim-go
