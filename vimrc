@@ -377,9 +377,9 @@ nnoremap <c-l> :bnext<cr>
 nnoremap <c-q> :bp<cr>:bd #<cr>
 nnoremap <c-n> :enew<cr>
 nnoremap <c-y> :e #<cr>
-nnoremap <c-s> :w<cr>
-inoremap <c-s> <c-o>:w<cr>
-vnoremap <c-s> <esc>:w<cr>gv
+nnoremap <c-s> :wa<cr>
+inoremap <c-s> <c-o>:wa<cr>
+vnoremap <c-s> <esc>:wa<cr>gv
 
 " Other
 nnoremap <leader>ss :setlocal spell!<cr>

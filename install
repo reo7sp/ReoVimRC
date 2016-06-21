@@ -243,6 +243,7 @@ w_install_ycm() {
   if eval $installcmd; then
     cd -
     mkdir -p $INSTALL_DIR/.vim/bundle_backup
+    rm -rf $INSTALL_DIR/.vim/bundle_backup/YouCompleteMe
     cp -r $INSTALL_DIR/.vim/bundle/YouCompleteMe $INSTALL_DIR/.vim/bundle_backup/YouCompleteMe
     echo
     echo -e "${Green}Successfully done!${Color_Off}"
