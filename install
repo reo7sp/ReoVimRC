@@ -175,7 +175,7 @@ w_ask_to_continue() {
 
 w_prepare() {
   log "Creating folders..."
-  mkdir -p $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell}
+  mkdir -p $INSTALL_DIR/.vim/{bundle,backup,tmp,undo,sessions,spell,view}
 }
 
 w_download_plugin_manager() {
@@ -210,6 +210,12 @@ w_copy_configs() {
   fi
 }
 
+w_install_plugins() {
+  log "Installing plugins..."
+  REOVIMRC_LIGHT=0 vim -c ":PlugUpdate | :qa!"
+  REOVIMRC_LIGHT=1 vim -c ":PlugUpdate | :qa!"
+}
+
 w_ask_to_install_ycm() {
   echo
   confirm "Do you want to compile YouCompleteMe plugin now? (it's long)"
@@ -235,19 +241,18 @@ w_install_ycm() {
 
   log "Starting the build..."
   if eval $installcmd; then
+    cd -
+    mkdir -p $INSTALL_DIR/.vim/bundle_backup
+    cp -r $INSTALL_DIR/.vim/bundle/YouCompleteMe $INSTALL_DIR/.vim/bundle_backup/YouCompleteMe
     echo
     echo -e "${Green}Successfully done!${Color_Off}"
+    echo "Build was backuped to $INSTALL_DIR/.vim/bundle_backup/YouCompleteMe"
   else
+    cd -
     echo
     echo -e "${BRed}The installation failed${Color_Off}"
     echo -e "${Red}Fix errors and rerun this command:${Color_Off} 'cd $INSTALL_DIR/.vim/bundle/YouCompleteMe; $installcmd'"
   fi
-}
-
-w_install_plugins() {
-  log "Installing plugins..."
-  env REOVIMRC_LIGHT=0 vim -c ":PlugUpdate | :qa!"
-  env REOVIMRC_LIGHT=1 vim -c ":PlugUpdate | :qa!"
 }
 
 w_say_goodbye() {
@@ -267,9 +272,9 @@ main() {
   w_prepare
   w_download_plugin_manager
   w_copy_configs
-  w_ask_to_install_ycm && w_install_ycm
   w_install_plugins
+  w_ask_to_install_ycm && w_install_ycm
   w_say_goodbye
 }
 
-main
+[[ "$0" == "$BASH_SOURCE" ]] && main $@
