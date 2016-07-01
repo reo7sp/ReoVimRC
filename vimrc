@@ -83,9 +83,14 @@ endif
 Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
+Plug 'kchmck/vim-coffee-script'
+
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-scripts/nginx.vim'
 Plug 'tpope/vim-markdown'
+
+Plug 'JulesWang/css.vim'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'genoma/vim-less'
 Plug 'wavded/vim-stylus'
 
