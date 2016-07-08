@@ -48,6 +48,8 @@ else
   Plug 'Valloric/YouCompleteMe'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+
+  Plug 'tpope/vim-rails'
 endif
 
 Plug 'Raimondi/delimitMate'
@@ -73,6 +75,7 @@ Plug 'luochen1990/rainbow'
 Plug 'ciaranm/detectindent'
 Plug 'tpope/vim-vinegar'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pbrisbin/vim-mkdir'
 
 Plug 'airblade/vim-gitgutter'
 if !g:reovimrc_light
