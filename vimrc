@@ -48,13 +48,12 @@ else
   Plug 'Valloric/YouCompleteMe'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-
   Plug 'tpope/vim-rails'
 endif
 
 Plug 'Raimondi/delimitMate'
-Plug 'editorconfig/editorconfig-vim'
 if !g:reovimrc_light
+  Plug 'editorconfig/editorconfig-vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'scrooloose/syntastic'
   Plug 'Chiel92/vim-autoformat'
