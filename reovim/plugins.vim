@@ -35,6 +35,7 @@ endif
 
 Plug 'Raimondi/delimitMate'
 Plug 'ciaranm/detectindent'
+Plug 'vim-scripts/restore_view.vim'
 if !g:reovimrc_light
   Plug 'editorconfig/editorconfig-vim'
   Plug 'ntpeters/vim-better-whitespace'
