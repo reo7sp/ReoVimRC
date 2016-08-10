@@ -71,6 +71,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-scripts/nginx.vim'
 Plug 'tpope/vim-markdown'
+Plug 'suan/vim-instant-markdown'
 
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
