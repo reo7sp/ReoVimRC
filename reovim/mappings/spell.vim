@@ -1,1 +1,2 @@
-nnoremap <leader>ss :setlocal spell!<cr>
+nnoremap <leader>s :setlocal spell!<cr>
+

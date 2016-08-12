@@ -11,3 +11,5 @@ source ~/.vim/reovim/mappings/ultisnips.vim
 source ~/.vim/reovim/mappings/unite.vim
 source ~/.vim/reovim/mappings/vim-multiple-cursors.vim
 source ~/.vim/reovim/mappings/youcompleteme.vim
+source ~/.vim/reovim/mappings/vim-easy-align.vim
+source ~/.vim/reovim/mappings/ctrlsf.vim

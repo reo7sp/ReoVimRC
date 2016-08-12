@@ -9,3 +9,4 @@ source ~/.vim/reovim/plugins/vim-go.vim
 source ~/.vim/reovim/plugins/vim-indent-guides.vim
 source ~/.vim/reovim/plugins/vim-session.vim
 source ~/.vim/reovim/plugins/youcompleteme.vim
+source ~/.vim/reovim/plugins/winresizer.vim

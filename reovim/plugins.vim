@@ -10,16 +10,17 @@ Plug 'xolox/vim-shell'
 " Navigation
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
+Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/neomru.vim'
 
 Plug 'Lokaltog/vim-easymotion'
 
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'simeji/winresizer'
 if !g:reovimrc_light
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-
   Plug 'majutsushi/tagbar'
-
   Plug 'xolox/vim-session'
 endif
 
@@ -28,9 +29,14 @@ if g:reovimrc_light
   Plug 'ervandew/supertab'
 else
   Plug 'Valloric/YouCompleteMe'
-
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+endif
+
+if !g:reovimrc_light
+  Plug 'scrooloose/syntastic'
+  Plug 'xolox/vim-easytags'
+  Plug 'Chiel92/vim-autoformat'
 endif
 
 Plug 'Raimondi/delimitMate'
@@ -39,17 +45,17 @@ Plug 'vim-scripts/restore_view.vim'
 if !g:reovimrc_light
   Plug 'editorconfig/editorconfig-vim'
   Plug 'ntpeters/vim-better-whitespace'
-
-  Plug 'scrooloose/syntastic'
-  Plug 'xolox/vim-easytags'
-  Plug 'Chiel92/vim-autoformat'
 endif
 
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/vim-easy-align'
 if !g:reovimrc_light
-  Plug 'godlygeek/tabular'
+  Plug 'rhysd/conflict-marker.vim'
+  Plug 'mbbill/undotree'
+  Plug 'mattn/gist-vim'
+  Plug 'dyng/ctrlsf.vim'
 endif
 
 " Appearance
@@ -84,7 +90,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
-Plug 'thinca/vim-quickrun'
 
 " User
 if filereadable(expand("~/.vimrc.user.install"))
