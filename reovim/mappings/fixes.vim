@@ -46,3 +46,5 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 noremap <c-w>g :vertical wincmd f<CR>
+
+nnoremap <cr> :noh<cr><cr>

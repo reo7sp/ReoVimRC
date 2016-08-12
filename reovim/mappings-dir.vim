@@ -12,3 +12,4 @@ source ~/.vim/reovim/mappings/vim-multiple-cursors.vim
 source ~/.vim/reovim/mappings/youcompleteme.vim
 source ~/.vim/reovim/mappings/vim-easy-align.vim
 source ~/.vim/reovim/mappings/ctrlsf.vim
+source ~/.vim/reovim/mappings/undotree.vim
