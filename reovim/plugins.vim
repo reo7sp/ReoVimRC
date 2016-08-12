@@ -52,11 +52,11 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
+Plug 'dyng/ctrlsf.vim'
 if !g:reovimrc_light
   Plug 'rhysd/conflict-marker.vim'
   Plug 'mbbill/undotree'
   Plug 'mattn/gist-vim'
-  Plug 'dyng/ctrlsf.vim'
 endif
 
 " Appearance

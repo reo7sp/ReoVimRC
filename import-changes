@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -r reovim
 cp -r ~/.vim/reovim .
 cp ~/.vimrc vimrc
 cp ~/.gvimrc gvimrc
