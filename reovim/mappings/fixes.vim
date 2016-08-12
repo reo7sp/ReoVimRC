@@ -37,6 +37,7 @@ cnoremap <C-N> <Down>
 cmap cwd cd %:p:h
 cmap cd. cd %:p:h
 cmap w!! w !sudo tee % >/dev/null
+cmap bq bd
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
