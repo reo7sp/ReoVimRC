@@ -12,6 +12,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/neomru.vim'
+Plug 'thinca/vim-unite-history'
 
 Plug 'Lokaltog/vim-easymotion'
 
