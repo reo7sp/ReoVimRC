@@ -186,6 +186,7 @@ w_download_plugin_manager() {
 w_copy_configs() {
   log "Copying configs..."
   cp vimrc $INSTALL_DIR/.vimrc
+  cp gvimrc $INSTALL_DIR/.gvimrc
   cp -r reovim $INSTALL_DIR/.vim/
   if [[ ! -f $INSTALL_DIR/.vimrc.user.before ]]; then
     cp vimrc.user.before $INSTALL_DIR/.vimrc.user.before
