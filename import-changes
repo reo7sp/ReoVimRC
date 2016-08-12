@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp -r ~/.vim/reovim .
+cp ~/.vimrc vimrc
+cp ~/.gvimrc gvimrc
