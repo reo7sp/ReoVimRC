@@ -12,6 +12,9 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
 
+map zl zL
+map zh zH
+
 nnoremap Y y$
 
 nmap <leader>f0 :set foldlevel=0<CR>
@@ -42,6 +45,4 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
-map zl zL
-map zh zH
-
+noremap <c-w>g :vertical wincmd f<CR>

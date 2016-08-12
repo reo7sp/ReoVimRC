@@ -1,2 +1,2 @@
-nmap <C-F> <Plug>CtrlSFPrompt
-vmap <C-F> <Plug>CtrlSFVwordPath
+nmap <leader>f <Plug>CtrlSFPrompt
+vmap <leader>f <Plug>CtrlSFVwordPath
