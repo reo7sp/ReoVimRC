@@ -99,9 +99,9 @@ set ttyfast
 set hidden
 
 " Encoding
-set fileencoding=utf-8
 set encoding=utf-8
-set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp1251,latin1
 set fileformats=unix,dos,mac
 
 " Russian support

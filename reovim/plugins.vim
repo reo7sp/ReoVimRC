@@ -71,20 +71,20 @@ if !g:reovimrc_light
 endif
 
 " File type specific
-Plug 'kchmck/vim-coffee-script'
+Plug 'reo7sp/vim-coffee-script'
 Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
-
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'vim-scripts/nginx.vim'
-Plug 'tpope/vim-markdown'
-Plug 'suan/vim-instant-markdown'
 
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'genoma/vim-less'
 Plug 'wavded/vim-stylus'
+
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-scripts/nginx.vim'
+Plug 'tpope/vim-markdown'
+Plug 'suan/vim-instant-markdown'
 
 " Other
 Plug 'tpope/vim-unimpaired'
