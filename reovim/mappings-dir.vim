@@ -9,11 +9,11 @@ endif
 
 source ~/.vim/reovim/mappings/buffers.vim
 source ~/.vim/reovim/mappings/easymotion.vim
+source ~/.vim/reovim/mappings/ctrlsf.vim
 source ~/.vim/reovim/mappings/files.vim
 source ~/.vim/reovim/mappings/fixes.vim
 source ~/.vim/reovim/mappings/gitgutter.vim
 source ~/.vim/reovim/mappings/paste.vim
 source ~/.vim/reovim/mappings/unite.vim
 source ~/.vim/reovim/mappings/vim-multiple-cursors.vim
-source ~/.vim/reovim/mappings/vim-easy-align.vim
-source ~/.vim/reovim/mappings/ctrlsf.vim
+source ~/.vim/reovim/mappings/tabular.vim
