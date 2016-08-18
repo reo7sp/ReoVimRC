@@ -90,7 +90,7 @@ check_dependency() {
       fi
       ;;
     python-dev)
-      if [[ $(find /usr/include /usr/local/include -name "Python.h") != "" ]]; then
+      if [[ $(find /usr/include /usr/local/include /usr/local/Cellar ~/.linuxbrew -name "Python.h" 2>/dev/null) != "" ]]; then
         echo -e "${BGreen}OK${Color_Off}"
       else
         echo -e "${BRed}NOT FOUND${Color_Off}"
