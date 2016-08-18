@@ -19,8 +19,11 @@ cd ReoVimRC
 ## How to add custom settings
 For this purpose there is **~/.vimrc.user.after** file which you can edit as you want, and changes won't be lost after update. To add plugins use **~/.vimrc.user.install** file.
 
-# Mappings
-_(there are not all of them, see `reovim/mappings` folder for more)_
+## Plugins
+See [reovim/plugins.vim](reovim/plugins.vim)
+
+## Mappings
+_(there are not all of them, see [reovim/mappings](reovim/mappings) folder for more)_
 
 | Key                | Action                                                      |
 | ---                | ---                                                         |
@@ -50,7 +53,7 @@ _(there are not all of them, see `reovim/mappings` folder for more)_
 | c-k                | Skip next same selection while doing multicursor editing    |
 | ga                 | Align text                                                  |
 
-# Custom commands
+## Custom commands
 
 | Command    | Action                                         |
 | ---        | ---                                            |
