@@ -1,3 +1,5 @@
+filetype plugin indent on
+
 " Editor appearance
 set number
 set relativenumber
@@ -33,7 +35,7 @@ set foldenable
 set foldmethod=syntax
 set foldlevelstart=99
 
-set wrap
+set nowrap
 set linebreak
 set breakindent
 set showbreak=+++\ 
@@ -64,6 +66,8 @@ set copyindent
 set smartindent
 set smarttab
 
+set nrformats-=octal
+
 set viewoptions=folds,cursor,unix,slash
 
 set backspace=eol,start,indent
@@ -82,22 +86,6 @@ set autowriteall
 
 set nospell
 
-" Other
-set lazyredraw
-set noerrorbells
-set novisualbell
-set mouse=a
-
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
-set undodir=~/.vim/undo
-set viewdir=~/.vim/view
-set shell=bash
-
-set history=700
-set ttyfast
-set hidden
-
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -111,3 +99,34 @@ set iskeyword=@,48-57,_,192-255
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 set iminsert=0
 set imsearch=0
+
+" Other
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
+set undodir=~/.vim/undo
+set viewdir=~/.vim/view
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
+
+set mouse=a
+set hidden
+set lazyredraw
+set noerrorbells
+set novisualbell
+set history=700
+set ttyfast
+set timeout
+set timeoutlen=1000
+set ttimeout
+set ttimeoutlen=10
+
+if empty($TMUX)
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+else
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+endif

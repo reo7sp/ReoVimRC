@@ -1,3 +1,7 @@
+command! Bigger  :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)+1', '')
+command! Smaller :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)-1', '')
+
+
 function! s:google(query)
   call xolox#misc#open#url('https://google.com/search?q=' . a:query)
 endfunction

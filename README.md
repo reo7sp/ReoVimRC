@@ -45,13 +45,14 @@ _(there are not all of them, see [reovim/mappings](reovim/mappings) folder for m
 | cop                | Toggle system clipboard as default register                 |
 | cow                | Toggle word wrap                                            |
 | yo                 | Enter inside mode with paste mode                           |
-| \<enter\>          | Clear highlighting of search results                        |
+| -                  | Clear highlighting of search results                        |
 | ,y                 | See yank history                                            |
 | c-j                | Complete snippet                                            |
 | c-d                | Find next same selection and enable multicursor editing     |
 | c-u                | Find previous same selection and enable multicursor editing |
 | c-k                | Skip next same selection while doing multicursor editing    |
 | ga                 | Align text                                                  |
+| ,nr                | Open current selection in separate buffer                   |
 
 ## Custom commands
 

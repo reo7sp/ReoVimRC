@@ -40,12 +40,19 @@ if !g:reovimrc_light
   Plug 'Chiel92/vim-autoformat'
 endif
 
+Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/python_match.vim'
+Plug 'vim-scripts/ruby-matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'ciaranm/detectindent'
 Plug 'vim-scripts/restore_view.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-endwise'
 if !g:reovimrc_light
   Plug 'editorconfig/editorconfig-vim'
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'chrisbra/NrrwRgn'
 endif
 
 Plug 'tpope/vim-surround'
@@ -62,7 +69,6 @@ endif
 " Appearance
 Plug 'altercation/vim-colors-solarized'
 Plug 'luochen1990/rainbow'
-Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'airblade/vim-gitgutter'
 if !g:reovimrc_light

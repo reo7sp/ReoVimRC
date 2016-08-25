@@ -48,4 +48,6 @@ map <leader>et :tabe %%
 
 noremap <c-w>g :vertical wincmd f<CR>
 
-nnoremap <cr> :noh<cr>
+nnoremap - :noh<cr>
+
+nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
