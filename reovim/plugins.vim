@@ -67,8 +67,9 @@ if !g:reovimrc_light
 endif
 
 " Appearance
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'luochen1990/rainbow'
+Plug 'Yggdroot/indentLine'
 
 Plug 'airblade/vim-gitgutter'
 if !g:reovimrc_light
