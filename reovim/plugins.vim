@@ -26,18 +26,31 @@ if !g:reovimrc_light
 endif
 
 " Editing
-if g:reovimrc_light
-  Plug 'ervandew/supertab'
-else
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'SirVer/ultisnips'
+if !g:reovimrc_light && has('nvim') && has('python3')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+  Plug 'Shougo/neoinclude.vim'
+  Plug 'Shougo/neco-syntax'
+
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
   Plug 'honza/vim-snippets'
+
+  Plug 'zchee/deoplete-jedi'
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  Plug 'zchee/deoplete-go'
+  Plug 'fishbullet/deoplete-ruby'
+
+  Plug 'osyo-manga/vim-monster', { 'do': 'gem install rcodetools' }
+else
+  Plug 'vim-scripts/AutoComplPop'
 endif
 
 if !g:reovimrc_light
   Plug 'scrooloose/syntastic'
   Plug 'xolox/vim-easytags'
   Plug 'Chiel92/vim-autoformat'
+  Plug '907th/vim-auto-save'
 endif
 
 Plug 'vim-scripts/matchit.zip'
@@ -45,7 +58,9 @@ Plug 'vim-scripts/python_match.vim'
 Plug 'vim-scripts/ruby-matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'ciaranm/detectindent'
-Plug 'vim-scripts/restore_view.vim'
+Plug 'Konfekt/FastFold'
+Plug 'kopischke/vim-stay'
+Plug 'Shougo/context_filetype.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-endwise'

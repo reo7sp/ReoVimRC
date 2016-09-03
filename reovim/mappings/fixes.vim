@@ -3,6 +3,8 @@ nnoremap j gj
 nnoremap k gk
 noremap <F1> <ESC>
 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 inoremap jk <ESC>
 
 noremap <S-Insert> <C-r>+
@@ -11,10 +13,8 @@ noremap! <S-Insert> <C-r>+
 vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
-
 map zl zL
 map zh zH
-
 nnoremap Y y$
 
 nmap <leader>f0 :set foldlevel=0<CR>

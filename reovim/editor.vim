@@ -18,7 +18,10 @@ set listchars=tab:»\ ,trail:·,nbsp:·,precedes:<,extends:>
 
 set mat=2
 
-set shortmess+=aIcT
+set shortmess+=aIT
+if has("patch-7.4.314")
+  set shortmess+=c
+endif
 set title
 set confirm
 set more

@@ -1,8 +1,10 @@
 if !g:reovimrc_light
+  if has('nvim')
+    source ~/.vim/reovim/mappings/deoplete.vim
+    source ~/.vim/reovim/mappings/neosnippets.vim
+  endif
   source ~/.vim/reovim/mappings/nerdtree.vim
   source ~/.vim/reovim/mappings/tagbar.vim
-  source ~/.vim/reovim/mappings/ultisnips.vim
-  source ~/.vim/reovim/mappings/youcompleteme.vim
   source ~/.vim/reovim/mappings/undotree.vim
   source ~/.vim/reovim/mappings/vim-better-whitespace.vim
 endif
