@@ -50,7 +50,6 @@ if !g:reovimrc_light
   Plug 'scrooloose/syntastic'
   Plug 'xolox/vim-easytags'
   Plug 'Chiel92/vim-autoformat'
-  Plug '907th/vim-auto-save'
 endif
 
 Plug 'vim-scripts/matchit.zip'

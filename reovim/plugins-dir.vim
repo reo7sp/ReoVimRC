@@ -9,7 +9,6 @@ if !g:reovimrc_light
   source ~/.vim/reovim/plugins/vim-airline.vim
   source ~/.vim/reovim/plugins/vim-session.vim
   source ~/.vim/reovim/plugins/syntastic.vim
-  source ~/.vim/reovim/plugins/vim-auto-save.vim
 endif
 
 source ~/.vim/reovim/plugins/delimitmate.vim
