@@ -2,7 +2,6 @@ filetype plugin indent on
 
 " Editor appearance
 set number
-set relativenumber
 set cul
 set showmatch
 set scrolloff=5

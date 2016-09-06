@@ -38,7 +38,7 @@ _(there are not all of them, see [reovim/mappings](reovim/mappings) folder for m
 | c-t                | Search functions, variables, etc in file                    |
 | ,t                 | Show tree of functions, variables, etc in file              |
 | c-l                | Search recent (last) files                                  |
-| c-g                | Search buffers and windows                                  |
+| c-n                | Search buffers and windows                                  |
 | :::                | Search commands                                             |
 | \<space\>          | Quick search by char inside current buffer                  |
 | ,\<space\>         | Search inside all files                                     |

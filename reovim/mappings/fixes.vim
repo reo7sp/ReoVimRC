@@ -5,8 +5,6 @@ noremap <F1> <ESC>
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-inoremap jk <ESC>
-
 noremap <S-Insert> <C-r>+
 noremap! <S-Insert> <C-r>+
 

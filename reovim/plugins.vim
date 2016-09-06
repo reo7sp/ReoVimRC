@@ -104,7 +104,9 @@ Plug 'wavded/vim-stylus'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-scripts/nginx.vim'
 Plug 'tpope/vim-markdown'
-Plug 'suan/vim-instant-markdown'
+if !g:reovimrc_light
+  Plug 'suan/vim-instant-markdown'
+endif
 
 " Other
 Plug 'tpope/vim-unimpaired'
