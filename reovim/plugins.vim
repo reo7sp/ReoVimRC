@@ -54,7 +54,6 @@ endif
 
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/python_match.vim'
-Plug 'vim-scripts/ruby-matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'ciaranm/detectindent'
 Plug 'Konfekt/FastFold'
