@@ -19,3 +19,5 @@ source ~/.vim/reovim/mappings/unite.vim
 source ~/.vim/reovim/mappings/vim-multiple-cursors.vim
 source ~/.vim/reovim/mappings/tabular.vim
 source ~/.vim/reovim/mappings/files.vim
+source ~/.vim/reovim/mappings/vim-over.vim
+source ~/.vim/reovim/mappings/nerdcommenter.vim

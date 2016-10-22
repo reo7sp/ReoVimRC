@@ -1,0 +1,1 @@
+nnoremap cr :OverCommandLine<cr>

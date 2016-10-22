@@ -73,6 +73,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
+Plug 'osyo-manga/vim-over'
 if !g:reovimrc_light
   Plug 'rhysd/conflict-marker.vim'
   Plug 'mbbill/undotree'

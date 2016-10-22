@@ -42,17 +42,19 @@ _(there are not all of them, see [reovim/mappings](reovim/mappings) folder for m
 | :::                | Search commands                                             |
 | \<space\>          | Quick search by char inside current buffer                  |
 | ,\<space\>         | Search inside all files                                     |
-| cop                | Toggle system clipboard as default register                 |
-| cow                | Toggle word wrap                                            |
-| yo                 | Enter inside mode with paste mode                           |
 | -                  | Clear highlighting of search results                        |
+| yo                 | Enter inside mode with paste mode                           |
 | ,y                 | See yank history                                            |
 | c-j                | Complete snippet                                            |
 | c-d                | Find next same selection and enable multicursor editing     |
 | c-u                | Find previous same selection and enable multicursor editing |
 | c-k                | Skip next same selection while doing multicursor editing    |
-| ga                 | Align text                                                  |
 | ,nr                | Open current selection in separate buffer                   |
+| cop                | Toggle system clipboard as default register                 |
+| cow                | Toggle word wrap                                            |
+| ga                 | Align text                                                  |
+| gc                 | Toggle comment                                              |
+| cr                 | Replace text                                                |
 
 ## Custom commands
 
