@@ -77,7 +77,6 @@ Plug 'osyo-manga/vim-over'
 if !g:reovimrc_light
   Plug 'rhysd/conflict-marker.vim'
   Plug 'mbbill/undotree'
-  Plug 'mattn/gist-vim'
 endif
 
 " Appearance
